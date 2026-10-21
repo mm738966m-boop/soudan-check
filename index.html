@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ご相談前のチェックシート｜fulfull</title>
+<meta name="description" content="ご相談の前に、あなたのことを少しだけ教えてください。いただいた内容から、ご相談の日までに「お金の地図」を用意します。3分ほどで終わります。">
+<meta name="robots" content="noindex,nofollow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ご相談前のチェックシート｜fulfull">
+<meta property="og:description" content="タップ中心で3分ほど。いただいた内容から、ご相談の日までにあなたの「お金の地図」を用意します。">
+<meta property="og:image" content="https://mm738966m-boop.github.io/soudan-check/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--teal:#0E7C86;--deep:#0A5A62;--ink:#1C3236;--ink2:#4A6468;--soft:#EEF6F7;--line:#D5E4E6;--gold:#A87A1F;--goldfill:#D9A441;--goldbg:#FBF4E3;--bg:#fff;--card:#fff;--green:#06C755;--dot:#DCE9EB;--err:#C2452F}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--teal:#4FB8C1;--deep:#7FD3DA;--ink:#E6F1F2;--ink2:#B5C9CC;--soft:#12272A;--line:#27454A;--gold:#E2B85A;--goldfill:#D9A441;--goldbg:#2C2410;--bg:#0C1A1C;--card:#122426;--dot:#1B3236;--err:#FF8A73}}
+:root[data-theme="dark"]{--teal:#4FB8C1;--deep:#7FD3DA;--ink:#E6F1F2;--ink2:#B5C9CC;--soft:#12272A;--line:#27454A;--gold:#E2B85A;--goldfill:#D9A441;--goldbg:#2C2410;--bg:#0C1A1C;--card:#122426;--dot:#1B3236;--err:#FF8A73}
+*{box-sizing:border-box}
+body,p,li,label,div,span,b,h1,h2,h3{text-wrap:pretty}
+body{margin:0;background:var(--bg) radial-gradient(var(--dot) 1.6px,transparent 1.6px);background-size:22px 22px;color:var(--ink);font-family:"Zen Maru Gothic","Hiragino Maru Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;font-size:19px;font-weight:500;line-height:1.85;overflow-x:hidden}
+.wrap{max-width:640px;margin:0 auto;padding:0 16px 90px}
+.top{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line);padding:12px 0 10px}
+.top .in{max-width:640px;margin:0 auto;padding:0 16px}
+.prog{display:flex;gap:6px;margin-top:8px}
+.prog span{flex:1;height:10px;border-radius:999px;background:var(--line);transition:background .3s}
+.prog span.on{background:var(--teal)}
+.prog span.done{background:var(--goldfill)}
+.steplabel{font-size:16px;font-weight:700;color:var(--ink2);display:flex;justify-content:space-between;gap:8px}
+.step{display:none;animation:in .35s ease}
+.step.on{display:block}
+@keyframes in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.hero{text-align:center;padding:26px 0 6px}
+.hero img{display:block;margin:0 auto;width:150px;height:auto;animation:float 3.2s ease-in-out infinite}
+.hero .tag{display:inline-block;background:var(--goldbg);color:var(--gold);border:2px solid var(--goldfill);border-radius:999px;font-size:15px;font-weight:900;padding:2px 14px;margin:6px 0 8px}
+.hero h1{font-size:clamp(28px,7vw,40px);font-weight:900;color:var(--deep);line-height:1.35;margin:0 0 8px}
+.hero p{margin:0;color:var(--ink2);font-size:18px;text-wrap:balance}
+.gets{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:18px 0 6px}
+.gets div{background:var(--card);border:2px solid var(--line);border-radius:18px;padding:12px 6px;text-align:center;font-size:15px;font-weight:700;line-height:1.5;color:var(--ink)}
+.gets div b{display:block;font-size:26px;line-height:1.2;margin-bottom:4px}
+.head{display:grid;grid-template-columns:100px 1fr;gap:14px;align-items:center;margin:24px 0 10px}
+.head img{width:100px;height:auto}
+.head h2{font-size:clamp(24px,5.6vw,32px);font-weight:900;color:var(--deep);line-height:1.35;margin:0}
+.head p{margin:4px 0 0;font-size:17px;color:var(--ink2)}
+.q{background:var(--card);border:2px solid var(--line);border-radius:22px;padding:18px 18px 16px;margin:14px 0;box-shadow:0 6px 18px rgba(14,124,134,.06);transition:border-color .2s}
+.q.bad{border-color:var(--err)}
+.q .t{font-weight:900;font-size:20px;color:var(--deep);display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.q .t .req{font-size:13.5px;font-weight:900;color:#fff;background:var(--teal);border-radius:6px;padding:0 8px;line-height:1.7}
+.q .t .opt{font-size:13.5px;font-weight:900;color:var(--ink2);border:1.5px solid var(--line);border-radius:6px;padding:0 8px;line-height:1.6}
+.q .hint{font-size:16px;color:var(--ink2);margin:2px 0 10px}
+.q .msg{display:none;font-size:15px;font-weight:700;color:var(--err);margin-top:6px}
+.q.bad .msg{display:block}
+input[type=text],input[type=email],input[type=tel],input[type=number],select,textarea{font:inherit;font-size:20px;font-weight:700;width:100%;padding:12px 14px;border:2px solid var(--line);border-radius:14px;background:var(--bg);color:var(--ink);-webkit-appearance:none;appearance:none}
+select{background-image:linear-gradient(45deg,transparent 50%,var(--teal) 50%),linear-gradient(135deg,var(--teal) 50%,transparent 50%);background-position:calc(100% - 20px) 55%,calc(100% - 14px) 55%;background-size:6px 6px;background-repeat:no-repeat;padding-right:34px}
+::placeholder{color:var(--ink2);opacity:.55;font-weight:500}
+.ymd select{padding-left:12px;padding-right:28px}
+textarea{font-weight:500;font-size:18px;min-height:130px;line-height:1.7}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 4px var(--soft)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.ymd{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:8px}
+.ymd label{font-size:14px;color:var(--ink2);font-weight:700}
+.zip{display:grid;grid-template-columns:1fr auto;gap:8px}
+.zip button{font:inherit;font-size:16px;font-weight:900;border-radius:14px;border:2px solid var(--teal);background:var(--soft);color:var(--deep);padding:0 14px;cursor:pointer;white-space:nowrap}
+.tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}
+.tiles.c2{grid-template-columns:1fr 1fr}
+.tiles button{font:inherit;font-size:18px;font-weight:700;padding:12px 8px;border-radius:16px;border:2px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer;line-height:1.4;transition:all .15s}
+.tiles button:active{transform:scale(.97)}
+.tiles button.sel{background:var(--teal);border-color:var(--teal);color:#fff;box-shadow:0 4px 12px rgba(14,124,134,.25)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.chips button{font:inherit;font-size:16px;font-weight:700;padding:6px 14px;border-radius:999px;border:2px solid var(--line);background:var(--bg);color:var(--deep);cursor:pointer}
+.chips button.sel{background:var(--teal);border-color:var(--teal);color:#fff}
+.money{display:flex;align-items:center;gap:10px}
+.money input{width:170px;text-align:right;font-size:24px;font-weight:900}
+.money .u{font-weight:700;color:var(--ink2)}
+.nav{display:flex;gap:10px;margin:22px 0 0}
+.btn{font:inherit;font-size:19px;font-weight:900;padding:15px 18px;border-radius:999px;border:2px solid var(--line);background:var(--card);color:var(--deep);cursor:pointer;flex:1}
+.btn.main{background:var(--green);border-color:var(--green);color:#fff;flex:2;box-shadow:0 6px 16px rgba(6,199,85,.25)}
+.btn.main:disabled{background:var(--line);border-color:var(--line);color:var(--ink2);box-shadow:none;cursor:not-allowed}
+.agree{background:var(--card);border:2px solid var(--teal);border-radius:24px;padding:18px;margin:18px 0 0}
+.agree h3{margin:0 0 4px;font-size:21px;font-weight:900;color:var(--deep)}
+.agree .lead{font-size:16px;color:var(--ink2);margin:0 0 10px}
+.pt{display:grid;grid-template-columns:44px 1fr;gap:12px;padding:12px 0;border-top:1px dashed var(--line)}
+.pt .ic{width:44px;height:44px;border-radius:50%;background:var(--soft);display:grid;place-items:center;font-size:22px}
+.pt b{display:block;font-size:18px;color:var(--ink);line-height:1.5}
+.pt span{display:block;font-size:16px;color:var(--ink2);line-height:1.7;margin-top:2px}
+details{margin-top:6px;border-top:1px dashed var(--line);padding-top:10px}
+summary{cursor:pointer;font-weight:900;color:var(--teal);font-size:17px;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::before{content:"＋ "}
+details[open] summary::before{content:"－ "}
+.detail{font-size:15px;line-height:1.8;color:var(--ink);background:var(--soft);border-radius:14px;padding:12px 14px;margin-top:10px}
+.detail h4{font-size:16px;margin:12px 0 2px;color:var(--deep)}
+.detail h4:first-child{margin-top:0}
+.detail p,.detail ul{margin:0}
+.detail ul{padding-left:1.2em}
+.detail a{color:var(--teal);word-break:break-all}
+.check{display:flex;gap:12px;align-items:flex-start;margin-top:14px;padding:14px;border-radius:16px;background:var(--goldbg);border:2px solid var(--goldfill);cursor:pointer}
+.check input{width:28px;height:28px;flex:none;margin:2px 0 0;accent-color:var(--teal)}
+.check span{font-weight:900;font-size:17px;line-height:1.6}
+.sum{background:var(--card);border:2px solid var(--line);border-radius:22px;padding:6px 18px}
+.sum .line{display:grid;grid-template-columns:8.5em 1fr;gap:10px;padding:10px 0;border-bottom:1px dashed var(--line);font-size:17px}
+.sum .line:last-child{border-bottom:0}
+.sum .line span{color:var(--ink2);font-weight:700}
+.sum .line b{word-break:break-word;white-space:pre-wrap}
+.ok{background:var(--goldbg);border:2px solid var(--goldfill);border-radius:16px;padding:14px 18px;font-size:17px;margin-top:10px}
+.note{font-size:15px;color:var(--ink2)}
+.next{display:grid;gap:10px;margin:14px 0}
+.next .n{display:grid;grid-template-columns:40px 1fr;gap:12px;align-items:start;background:var(--card);border:2px solid var(--line);border-radius:18px;padding:14px}
+.next .n i{font-style:normal;width:40px;height:40px;border-radius:50%;background:var(--teal);color:#fff;display:grid;place-items:center;font-weight:900}
+.next .n b{display:block;font-size:18px}
+.next .n span{font-size:16px;color:var(--ink2)}
+.card{display:grid;grid-template-columns:72px 1fr;gap:14px;align-items:center;text-decoration:none;color:inherit;background:var(--card);border:2px solid var(--teal);border-radius:20px;padding:14px;margin-top:6px}
+.card img{width:72px;height:auto}
+.card b{display:block;color:var(--deep);font-size:18px;line-height:1.5}
+.card span{font-size:15px;color:var(--ink2)}
+.card em{font-style:normal;font-weight:900;color:var(--teal);font-size:16px}
+@media (max-width:480px){.head{grid-template-columns:76px 1fr}.head img{width:76px}.gets div{font-size:14px}.tiles{grid-template-columns:1fr 1fr}.sum .line{grid-template-columns:1fr;gap:0}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="top"><div class="in"><div class="steplabel"><span id="sl">はじめに</span><span id="sn">1 / 6</span></div><div class="prog" id="prog"><span class="on"></span><span></span><span></span><span></span><span></span><span></span></div></div></div>
+<main class="wrap">
+
+<!-- 0 はじめに＋同意 -->
+<section class="step on" data-step="0">
+<div class="hero">
+<img src="mascot_invite.webp" alt="">
+<div class="tag">3分ほど・タップ中心</div>
+<h1>ご相談の日までに、<br>あなたの「お金の地図」を<br>用意しておきます</h1>
+<p>そのために、少しだけ教えてください。<br>当日は、できあがった地図を<br>一緒に見るところから始められます。</p>
+</div>
+<div class="gets">
+<div><b>🗺️</b>いまの保険と<br>お金の全体図</div>
+<div><b>📈</b>老後までの<br>お金の見通し</div>
+<div><b>💡</b>組み直すなら<br>どこからか</div>
+</div>
+
+<div class="agree" id="agreeBox">
+<h3>はじめる前に、お預かりする情報の使い方</h3>
+<p class="lead">大事なところを3つにまとめました。</p>
+<div class="pt"><div class="ic">🔒</div><div><b>あなたのご相談のためだけに使います</b><span>お金の地図（シミュレーション）づくり、ご提案、そのためのご連絡に使います。</span></div></div>
+<div class="pt"><div class="ic">🤖</div><div><b>地図づくりにAIを使います</b><span>計算と資料づくりに、米国Anthropic社のAI「Claude」を使います。入力内容がAIの学習に使われない設定にしています。</span></div></div>
+<div class="pt"><div class="ic">🤝</div><div><b>ほかの会社には渡しません</b><span>保険のお申し込みに進むときだけ、保険会社へお伝えします。そのときは改めて確認します。</span></div></div>
+<details>
+<summary>くわしい内容を読む</summary>
+<div class="detail">
+<h4>運営しているのは</h4>
+<p>fulfull株式会社（保険代理店）<br>神奈川県横浜市青葉区大場町174-121　代表 森川 満章</p>
+<h4>お預かりした情報を使う目的</h4>
+<ul><li>ライフプランとお金のシミュレーション（お金の地図）の作成</li><li>保険や資産づくりのご提案</li><li>上の2つのためのご連絡</li></ul>
+<h4>見るのは誰か</h4>
+<p>担当の森川と、当社の保険スタッフ（募集人）だけです。</p>
+<h4>AIの利用と、外国にある会社への提供について</h4>
+<p>お金の地図をつくるとき、入力内容とお送りいただいた保険証券の写真を、AIで読み取り・計算します。このAIは外国の会社のサービスのため、個人情報保護法第28条にもとづき、次のとおりお知らせします。</p>
+<ul>
+<li>提供先：Anthropic, PBC（AI「Claude」の提供元）</li>
+<li>国：アメリカ合衆国</li>
+<li>その国の制度：国全体をまとめて定める個人情報保護の法律はなく、分野ごと・州ごとの法律で守られています。くわしくは個人情報保護委員会のページをご覧ください。<br><a href="https://www.ppc.go.jp/enforcement/infoprovision/laws/offshore_report_america/" target="_blank" rel="noopener">個人情報保護委員会「外国制度（アメリカ合衆国）」</a></li>
+<li>提供先がとっている措置：入力内容をAIの学習に使わない設定にしています。この設定では、やり取りの内容は原則30日で削除されます（安全上の確認が必要な場合を除く）。<br><a href="https://www.anthropic.com/legal/privacy" target="_blank" rel="noopener">Anthropic社のプライバシーポリシー</a></li>
+</ul>
+<h4>保管のしかた</h4>
+<p>入力内容は、Googleのスプレッドシートなど、アクセスできる人を限ったクラウドに保管します。</p>
+<h4>ほかの会社への提供</h4>
+<p>法令にもとづく場合を除き、ご本人の同意なく第三者へ提供しません。保険のお申し込みの際は、保険会社へお伝えします（そのとき保険会社の書類で改めて確認します）。</p>
+<h4>健康状態のこと</h4>
+<p>このシートでは、持病や健康診断の結果はお聞きしません。必要なときは、ご相談の場で直接おうかがいします。</p>
+<h4>入力は任意です</h4>
+<p>入力するかどうかは自由です。ただ、項目が足りないと地図が作れない場合があります。</p>
+<h4>お問い合わせ・開示などのご希望</h4>
+<p>fulfull0605@gmail.com<br><a href="https://fulfull.jp/privacy-policy-hoken/" target="_blank" rel="noopener">プライバシーポリシー（全文）</a></p>
+</div>
+</details>
+<label class="check"><input type="checkbox" id="agree"><span>上の内容（AIの利用と、アメリカ合衆国の会社への提供を含む）を確認し、同意します</span></label>
+</div>
+<input type="text" id="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
+<div class="nav"><button class="btn main" type="button" id="start" disabled>同意してはじめる</button></div>
+<p class="note" style="text-align:center;margin-top:10px">チェックを入れると押せるようになります</p>
+</section>
+
+<!-- 1 あなたのこと -->
+<section class="step" data-step="1">
+<div class="head"><img src="mascot_point.webp" alt=""><div><h2>あなたのこと</h2><p>地図の年齢の計算に使います。</p></div></div>
+<div class="q" data-need="name"><div class="t">お名前<span class="req">必須</span></div><input id="name" type="text" autocomplete="name" placeholder="例）山田 花子"><div class="msg">お名前を入れてください</div></div>
+<div class="q" data-need="kana"><div class="t">フリガナ<span class="req">必須</span></div><input id="kana" type="text" placeholder="例）ヤマダ ハナコ"><div class="msg">フリガナを入れてください</div></div>
+<div class="q" data-need="birth"><div class="t">生年月日<span class="req">必須</span></div>
+<div class="ymd"><div><label for="by">年</label><select id="by"></select></div><div><label for="bm">月</label><select id="bm"></select></div><div><label for="bd">日</label><select id="bd"></select></div></div>
+<div class="msg">生年月日を選んでください</div></div>
+<div class="q" data-need="sex"><div class="t">性別<span class="req">必須</span></div><div class="hint">保険料の計算に使います</div><div class="tiles c2" data-k="sex"><button type="button">男性</button><button type="button">女性</button></div><div class="msg">どちらかを選んでください</div></div>
+<div class="nav"><button class="btn" type="button" data-go="0">もどる</button><button class="btn main" type="button" data-next="2">つぎへ</button></div>
+</section>
+
+<!-- 2 ご連絡先 -->
+<section class="step" data-step="2">
+<div class="head"><img src="mascot_invite.webp" alt=""><div><h2>ご連絡先</h2><p>地図ができたら、こちらにご連絡します。</p></div></div>
+<div class="q" data-need="email"><div class="t">メールアドレス<span class="req">必須</span></div><input id="email" type="email" autocomplete="email" inputmode="email" placeholder="例）hanako@example.com"><div class="msg">メールアドレスの形を確かめてください</div></div>
+<div class="q" data-need="tel"><div class="t">電話番号<span class="req">必須</span></div><div class="hint">ハイフンはなくても大丈夫です</div><input id="tel" type="tel" autocomplete="tel" inputmode="tel" placeholder="例）09012345678"><div class="msg">電話番号を確かめてください</div></div>
+<div class="q" data-need="zip"><div class="t">郵便番号<span class="req">必須</span></div><div class="hint">7けたで住所が自動で入ります</div><div class="zip"><input id="zip" type="text" inputmode="numeric" autocomplete="postal-code" placeholder="例）2270034" maxlength="8"><button type="button" id="zipbtn">住所を入れる</button></div><div class="msg">郵便番号は7けたです</div></div>
+<div class="q" data-need="addr"><div class="t">ご住所<span class="req">必須</span></div><div class="hint">番地・建物名まで</div><input id="addr" type="text" autocomplete="street-address" placeholder="例）神奈川県横浜市青葉区◯◯ 1-2-3"><div class="msg">ご住所を入れてください</div></div>
+<div class="nav"><button class="btn" type="button" data-go="1">もどる</button><button class="btn main" type="button" data-next="3">つぎへ</button></div>
+</section>
+
+<!-- 3 お仕事とご家族 -->
+<section class="step" data-step="3">
+<div class="head"><img src="mascot_think.webp" alt=""><div><h2>お仕事とご家族</h2><p>タップで選ぶだけの質問がほとんどです。</p></div></div>
+<div class="q" data-need="job"><div class="t">お仕事の内容<span class="req">必須</span></div><div class="hint">例）営業職、事務職、経営者など</div><input id="job" type="text" placeholder="例）営業職"><div class="msg">お仕事の内容を入れてください</div></div>
+<div class="q" data-need="head"><div class="t">世帯主の方のご状況<span class="req">必須</span></div><div class="tiles" data-k="head"><button type="button">会社員</button><button type="button">公務員</button><button type="button">自営</button><button type="button">パート</button><button type="button">年金受給</button><button type="button">その他</button></div><div class="msg">1つ選んでください</div></div>
+<div class="q" data-need="spouse"><div class="t">配偶者の方のご状況<span class="req">必須</span></div><div class="tiles" data-k="spouse"><button type="button">正社員</button><button type="button">公務員</button><button type="button">自営業</button><button type="button">パート</button><button type="button">専業主婦・主夫</button><button type="button">その他</button><button type="button">配偶者なし</button></div><div class="msg">1つ選んでください</div></div>
+<div class="q" data-need="income"><div class="t">あなたの年収<span class="req">必須</span></div><div class="hint">税込みのおおよそで大丈夫です</div><div class="money"><input id="income" type="number" inputmode="numeric" placeholder="0"><span class="u">万円</span></div><div class="chips" data-for="income"><button type="button">300</button><button type="button">400</button><button type="button">500</button><button type="button">600</button><button type="button">800</button><button type="button">1000</button></div><div class="msg">おおよその年収を入れてください</div></div>
+<div class="q" data-need="family"><div class="t">ご家族<span class="req">必須</span></div><div class="hint">一緒に暮らしている方を、年齢つきで</div><textarea id="family" placeholder="例）妻40歳、長男10歳、長女4歳" style="min-height:90px"></textarea><div class="chips" data-add="family"><button type="button">ひとり暮らし</button><button type="button">夫</button><button type="button">妻</button><button type="button">長男</button><button type="button">長女</button><button type="button">次男</button><button type="button">次女</button></div><div class="msg">ご家族と年齢を入れてください（ひとり暮らしならボタンを押すだけ）</div></div>
+<div class="q" data-need="house"><div class="t">お住まい<span class="req">必須</span></div><div class="tiles c2" data-k="house"><button type="button">持ち家</button><button type="button">賃貸</button></div><div class="msg">どちらかを選んでください</div></div>
+<div class="nav"><button class="btn" type="button" data-go="2">もどる</button><button class="btn main" type="button" data-next="4">つぎへ</button></div>
+</section>
+
+<!-- 4 いまの保険と知りたいこと -->
+<section class="step" data-step="4">
+<div class="head"><img src="mascot_point.webp" alt=""><div><h2>いまの保険と、知りたいこと</h2><p>分かる範囲で大丈夫です。</p></div></div>
+<div class="q" data-need="hoken"><div class="t">入っている保険<span class="req">必須</span></div><div class="hint">会社名と種類を、分かる範囲で。いくつでもどうぞ</div><textarea id="hoken" placeholder="例）アフラック がん保険、東京海上 変額保険"></textarea><div class="chips" data-set="hoken"><button type="button">入っていない</button><button type="button">分からない（証券を送ります）</button></div><div class="msg">分からなければ、下のボタンを押すだけで大丈夫です</div></div>
+<div class="ok" style="margin:4px 0 14px">📷 保険証券は、写真をLINEで送っていただければこちらで読み取ります。<br>ここで細かく書かなくても大丈夫です。</div>
+<div class="q"><div class="t">知りたいこと<span class="opt">任意</span></div><textarea id="ask" placeholder="例）教育費と老後のお金、どちらを先に考えればいい？"></textarea><div class="chips" data-add="ask"><button type="button">保険料が高い気がする</button><button type="button">老後のお金が心配</button><button type="button">教育費の準備</button><button type="button">NISAの始め方</button><button type="button">住宅ローンとの両立</button></div></div>
+<div class="nav"><button class="btn" type="button" data-go="3">もどる</button><button class="btn main" type="button" data-next="5">確認へ</button></div>
+</section>
+
+<!-- 5 確認 -->
+<section class="step" data-step="5">
+<div class="head"><img src="mascot_think.webp" alt=""><div><h2>この内容で送ります</h2><p>直したいところは「もどる」で戻れます。</p></div></div>
+<div class="sum" id="sum"></div>
+<div class="nav"><button class="btn" type="button" data-go="4">もどる</button><button class="btn main" type="button" id="send">この内容で送る</button></div>
+<p class="note" id="err" style="display:none;color:var(--err)"></p>
+</section>
+
+<!-- 6 完了 -->
+<section class="step" data-step="6">
+<div class="hero" style="padding-top:20px"><img src="mascot_base.webp" alt=""><h1 style="font-size:clamp(26px,6.4vw,34px)">受け付けました</h1><p id="doneMsg">ありがとうございました。<br>受付番号：<b id="no"></b></p></div>
+<div id="fallback" style="display:none">
+<div class="ok">通信がうまくいかなかったため、文章で送っていただく形に切り替えました。<br>下のボタンでコピーしてLINEを開き、貼り付けて送信を押してください。</div>
+<button class="btn main" type="button" id="copy" style="width:100%;margin-top:14px">文章をコピーする</button>
+<div class="ok" id="copied" style="display:none">コピーしました。<br>LINEを開いて貼り付け、送信を押すと届きます。</div>
+<textarea id="text" readonly style="margin-top:12px;min-height:120px;font-size:16px"></textarea>
+</div>
+<p style="margin-top:14px">ご相談の日までに、地図づくりを進めます。<br>次の2つがあると、地図がもっと正確になります。</p>
+<div class="next">
+<div class="n"><i>1</i><div><b>保険証券の写真をLINEで</b><span>表と裏、1本ずつ。会社がバラバラでも大丈夫です。</span></div></div>
+<div class="n"><i>2</i><div><b>家計の数字をざっくり</b><span>分からない欄は「あとで」で大丈夫。5分ほどです。</span></div></div>
+</div>
+<a class="card" href="https://mm738966m-boop.github.io/kakei-hearing/"><img src="mascot_point.webp" alt=""><div><b>家計の数字 入力シート</b><span>毎月のお金・いまあるお金・将来のお金</span><br><em>入力をはじめる →</em></div></a>
+<p class="note" style="margin-top:18px">入れた内容を直したいときは、LINEでひとこと送っていただければ大丈夫です。</p>
+</section>
+</main>
+<script>
+const $=id=>document.getElementById(id);
+const API='';
+const VER='2026-10-21版';
+const labels=['はじめに','あなたのこと','ご連絡先','お仕事とご家族','いまの保険','確認','受け付けました'];
+const sel={};
+function go(n){document.querySelectorAll('.step').forEach(s=>s.classList.toggle('on',+s.dataset.step===n));const shown=Math.min(n,5);document.querySelectorAll('#prog span').forEach((b,i)=>{b.className=n===6||i<shown?'done':i===shown?'on':''});$('sl').textContent=labels[n];$('sn').textContent=n===6?'完了':(shown+1)+' / 6';window.scrollTo({top:0,behavior:'smooth'})}
+document.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>go(+b.dataset.go));
+// 同意
+$('agree').onchange=()=>{$('start').disabled=!$('agree').checked};
+$('start').onclick=()=>{if($('agree').checked)go(1)};
+// 生年月日
+(()=>{const y=new Date().getFullYear();let h='<option value="">選ぶ</option>';for(let i=y-18;i>=y-85;i--){const w=i>=2019?'令和'+(i-2018):i>=1989?'平成'+(i-1988):'昭和'+(i-1925);h+=`<option value="${i}">${i}（${w.replace(/(令和|平成)1$/,'$1元')}）</option>`}$('by').innerHTML=h;let m='<option value="">－</option>';for(let i=1;i<=12;i++)m+=`<option>${i}</option>`;$('bm').innerHTML=m;const fd=()=>{const yy=+$('by').value||2000,mm=+$('bm').value||1,cur=$('bd').value,n=new Date(yy,mm,0).getDate();let d='<option value="">－</option>';for(let i=1;i<=n;i++)d+=`<option${String(i)===cur?' selected':''}>${i}</option>`;$('bd').innerHTML=d};fd();$('by').onchange=fd;$('bm').onchange=fd})();
+// タイル
+document.querySelectorAll('.tiles').forEach(t=>t.querySelectorAll('button').forEach(b=>b.onclick=()=>{t.querySelectorAll('button').forEach(x=>x.classList.remove('sel'));b.classList.add('sel');sel[t.dataset.k]=b.textContent;t.closest('.q').classList.remove('bad')}));
+// 金額チップ
+document.querySelectorAll('.chips[data-for]').forEach(c=>{const inp=$(c.dataset.for);c.querySelectorAll('button').forEach(b=>b.onclick=()=>{inp.value=b.textContent;mark(c);inp.closest('.q').classList.remove('bad')});inp.addEventListener('input',()=>mark(c));function mark(c){c.querySelectorAll('button').forEach(x=>x.classList.toggle('sel',x.textContent===inp.value))}});
+// 追記チップ
+document.querySelectorAll('.chips[data-add]').forEach(c=>{const ta=$(c.dataset.add);c.querySelectorAll('button').forEach(b=>b.onclick=()=>{const w=b.textContent;if(w==='ひとり暮らし'){ta.value='ひとり暮らし'}else{const age=/^(長|次|三)/.test(w)||w==='夫'||w==='妻'?w+'　歳':w;ta.value=(ta.value.trim()&&ta.value.trim()!=='ひとり暮らし'?ta.value.trim()+'、':'')+age}ta.focus();const p=ta.value.lastIndexOf('　歳');if(p>=0)ta.setSelectionRange(p+1,p+1);ta.closest('.q').classList.remove('bad')})});
+document.querySelectorAll('.chips[data-set]').forEach(c=>{const ta=$(c.dataset.set);c.querySelectorAll('button').forEach(b=>b.onclick=()=>{ta.value=b.textContent;ta.closest('.q').classList.remove('bad')})});
+// 郵便番号→住所（zipcloud）
+function zen2han(s){return s.replace(/[０-９]/g,c=>String.fromCharCode(c.charCodeAt(0)-0xFEE0))}
+function lookup(){const z=zen2han($('zip').value).replace(/\D/g,'');if(z.length!==7){$('zip').closest('.q').classList.add('bad');return}$('zip').value=z;$('zip').closest('.q').classList.remove('bad');const cb='zc'+Date.now();window[cb]=r=>{delete window[cb];s.remove();if(r&&r.results&&r.results[0]){const a=r.results[0];const v=a.address1+a.address2+a.address3;if(!$('addr').value.startsWith(v)){$('addr').value=v}$('addr').focus();$('addr').setSelectionRange(9999,9999)}else{$('zipbtn').textContent='見つかりません'}};const s=document.createElement('script');s.src='https://zipcloud.ibsnet.co.jp/api/search?zipcode='+z+'&callback='+cb;s.onerror=()=>{$('zipbtn').textContent='手で入れてください'};document.body.appendChild(s)}
+$('zipbtn').onclick=lookup;$('zip').addEventListener('input',()=>{$('zipbtn').textContent='住所を入れる';if(zen2han($('zip').value).replace(/\D/g,'').length===7&&!$('addr').value)lookup()});
+// 入力チェック
+const V={name:()=>$('name').value.trim(),kana:()=>$('kana').value.trim(),birth:()=>$('by').value&&$('bm').value&&$('bd').value,sex:()=>sel.sex,
+email:()=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(zen2han($('email').value.trim())),tel:()=>zen2han($('tel').value).replace(/\D/g,'').length>=10,zip:()=>zen2han($('zip').value).replace(/\D/g,'').length===7,addr:()=>$('addr').value.trim().length>=4,
+job:()=>$('job').value.trim(),head:()=>sel.head,spouse:()=>sel.spouse,income:()=>$('income').value!=='',family:()=>$('family').value.trim()&&!/\s歳/.test($('family').value),house:()=>sel.house,hoken:()=>$('hoken').value.trim()};
+document.querySelectorAll('input,textarea,select').forEach(el=>el.addEventListener('input',()=>{const q=el.closest('.q');if(q&&q.dataset.need&&V[q.dataset.need]())q.classList.remove('bad')}));
+function check(scope){let first=null;scope.querySelectorAll('.q[data-need]').forEach(q=>{const ok=!!V[q.dataset.need]();q.classList.toggle('bad',!ok);if(!ok&&!first)first=q});return first}
+document.querySelectorAll('[data-next]').forEach(b=>b.onclick=()=>{let first=check(b.closest('.step'));const n=+b.dataset.next;if(!first&&n===5)first=check(document);if(first){const st=+first.closest('.step').dataset.step;if(!first.closest('.step').classList.contains('on'))go(st);setTimeout(()=>first.scrollIntoView({behavior:'smooth',block:'center'}),50);return}if(n===5)build();go(n)});
+let data={};
+function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
+function build(){const birth=$('by').value+'/'+$('bm').value+'/'+$('bd').value;
+ data={form:'soudan-check',ver:VER,agree:true,agreedAt:new Date().toISOString(),website:$('website').value,name:$('name').value.trim(),kana:$('kana').value.trim(),birth,sex:sel.sex,email:zen2han($('email').value.trim()),tel:zen2han($('tel').value).replace(/\D/g,''),zip:zen2han($('zip').value).replace(/\D/g,''),addr:$('addr').value.trim(),job:$('job').value.trim(),head:sel.head,spouse:sel.spouse,income:$('income').value,family:$('family').value.trim(),house:sel.house,hoken:$('hoken').value.trim(),ask:$('ask').value.trim(),src:location.href.split('?')[0]};
+ const rows=[['お名前',data.name+'（'+data.kana+'）'],['生年月日',birth],['性別',data.sex],['メール',data.email],['電話',data.tel],['ご住所','〒'+data.zip+' '+data.addr],['お仕事',data.job],['世帯主の方',data.head],['配偶者の方',data.spouse],['あなたの年収',data.income+'万円'],['ご家族',data.family],['お住まい',data.house],['入っている保険',data.hoken],['知りたいこと',data.ask||'—'],['同意','済み（'+VER+'）']];
+ $('sum').innerHTML=rows.map(r=>`<div class="line"><span>${r[0]}</span><b>${esc(r[1])}</b></div>`).join('');
+ $('text').value=['【ご相談前のチェックシート】'+new Date().toLocaleDateString('ja-JP')].concat(rows.map(r=>r[0]+'：'+r[1])).join('\n')}
+$('send').onclick=async()=>{const b=$('send');b.disabled=true;b.textContent='送っています…';
+ try{if(!API)throw new Error('no api');const r=await fetch(API,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(data)});const j=await r.json();if(!j.ok)throw new Error(j.error||'error');$('no').textContent=j.no;$('fallback').style.display='none'}
+ catch(e){$('doneMsg').innerHTML='ありがとうございました。<br>あと1つだけ、下の手順をお願いします。';$('fallback').style.display=''}
+ b.disabled=false;b.textContent='この内容で送る';go(6)};
+$('copy').onclick=async()=>{try{await navigator.clipboard.writeText($('text').value)}catch(e){$('text').select();document.execCommand('copy')}$('copied').style.display=''};
+</script>
+</body>
+</html>
