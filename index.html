@@ -4,143 +4,130 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>ヒアリングシート｜fulfull</title>
-<meta name="description" content="ご相談の前に、少しだけ教えてください。3分ほどで終わります。">
+<meta name="description" content="シミュレーション作成のためのヒアリングシートです。3分ほどで入力できます。">
 <meta name="robots" content="noindex,nofollow">
 <meta property="og:type" content="website">
 <meta property="og:title" content="ヒアリングシート｜fulfull">
-<meta property="og:description" content="ご相談の前に、少しだけ教えてください。タップ中心で3分ほどです。">
+<meta property="og:description" content="シミュレーション作成のためのヒアリングシートです。3分ほどで入力できます。">
 <meta property="og:image" content="https://mm738966m-boop.github.io/soudan-check/og.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&display=swap" rel="stylesheet">
 <style>
-:root{--teal:#0E7C86;--deep:#0A5A62;--ink:#1C3236;--ink2:#4A6468;--soft:#EEF6F7;--line:#D5E4E6;--gold:#A87A1F;--goldfill:#D9A441;--goldbg:#FBF4E3;--bg:#fff;--card:#fff;--green:#06C755;--dot:#DCE9EB;--err:#C2452F}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--teal:#4FB8C1;--deep:#7FD3DA;--ink:#E6F1F2;--ink2:#B5C9CC;--soft:#12272A;--line:#27454A;--gold:#E2B85A;--goldfill:#D9A441;--goldbg:#2C2410;--bg:#0C1A1C;--card:#122426;--dot:#1B3236;--err:#FF8A73}}
-:root[data-theme="dark"]{--teal:#4FB8C1;--deep:#7FD3DA;--ink:#E6F1F2;--ink2:#B5C9CC;--soft:#12272A;--line:#27454A;--gold:#E2B85A;--goldfill:#D9A441;--goldbg:#2C2410;--bg:#0C1A1C;--card:#122426;--dot:#1B3236;--err:#FF8A73}
+:root{--teal:#0E7C86;--deep:#0A5A62;--ink:#1C3236;--ink2:#4A6468;--soft:#EEF6F7;--line:#D5E4E6;--gold:#A87A1F;--goldfill:#D9A441;--goldbg:#FBF4E3;--bg:#F6FAFA;--card:#fff;--green:#06C755;--err:#C2452F}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--teal:#4FB8C1;--deep:#7FD3DA;--ink:#E6F1F2;--ink2:#B5C9CC;--soft:#12272A;--line:#27454A;--gold:#E2B85A;--goldfill:#D9A441;--goldbg:#2C2410;--bg:#0C1A1C;--card:#122426;--err:#FF8A73}}
+:root[data-theme="dark"]{--teal:#4FB8C1;--deep:#7FD3DA;--ink:#E6F1F2;--ink2:#B5C9CC;--soft:#12272A;--line:#27454A;--gold:#E2B85A;--goldfill:#D9A441;--goldbg:#2C2410;--bg:#0C1A1C;--card:#122426;--err:#FF8A73}
 *{box-sizing:border-box}
-body,p,li,label,div,span,b,h1,h2,h3{text-wrap:pretty}
-body{margin:0;background:var(--bg) radial-gradient(var(--dot) 1.6px,transparent 1.6px);background-size:22px 22px;color:var(--ink);font-family:"Zen Maru Gothic","Hiragino Maru Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;font-size:19px;font-weight:500;line-height:1.85;overflow-x:hidden}
-.wrap{max-width:640px;margin:0 auto;padding:0 16px 90px}
-.top{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line);padding:12px 0 10px}
-.top .in{max-width:640px;margin:0 auto;padding:0 16px}
-.prog{display:flex;gap:6px;margin-top:8px}
-.prog span{flex:1;height:10px;border-radius:999px;background:var(--line);transition:background .3s}
-.prog span.on{background:var(--teal)}
-.prog span.done{background:var(--goldfill)}
-.steplabel{font-size:16px;font-weight:700;color:var(--ink2);display:flex;justify-content:space-between;gap:8px}
-.step{display:none;animation:in .35s ease}
-.step.on{display:block}
-@keyframes in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
-.hero{text-align:center;padding:26px 0 6px}
-.hero img{display:block;margin:0 auto;width:150px;height:auto;animation:float 3.2s ease-in-out infinite}
-.hero .tag{display:inline-block;background:var(--goldbg);color:var(--gold);border:2px solid var(--goldfill);border-radius:999px;font-size:15px;font-weight:900;padding:2px 14px;margin:6px 0 8px}
-.hero h1{font-size:clamp(28px,7vw,40px);font-weight:900;color:var(--deep);line-height:1.35;margin:0 0 8px}
-.hero p{margin:0;color:var(--ink2);font-size:18px;text-wrap:balance}
-.gets{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:18px 0 6px}
-.gets div{background:var(--card);border:2px solid var(--line);border-radius:18px;padding:12px 6px;text-align:center;font-size:15px;font-weight:700;line-height:1.5;color:var(--ink)}
-.gets div b{display:block;font-size:26px;line-height:1.2;margin-bottom:4px}
-.head{display:grid;grid-template-columns:100px 1fr;gap:14px;align-items:center;margin:24px 0 10px}
-.head img{width:100px;height:auto}
-.head h2{font-size:clamp(24px,5.6vw,32px);font-weight:900;color:var(--deep);line-height:1.35;margin:0}
-.head p{margin:4px 0 0;font-size:17px;color:var(--ink2)}
-.q{background:var(--card);border:2px solid var(--line);border-radius:22px;padding:18px 18px 16px;margin:14px 0;box-shadow:0 6px 18px rgba(14,124,134,.06);transition:border-color .2s}
-.q.bad{border-color:var(--err)}
-.q .t{font-weight:900;font-size:20px;color:var(--deep);display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-.q .t .req{font-size:13.5px;font-weight:900;color:#fff;background:var(--teal);border-radius:6px;padding:0 8px;line-height:1.7}
-.q .t .opt{font-size:13.5px;font-weight:900;color:var(--ink2);border:1.5px solid var(--line);border-radius:6px;padding:0 8px;line-height:1.6}
-.q .hint{font-size:16px;color:var(--ink2);margin:2px 0 10px}
-.q .msg{display:none;font-size:15px;font-weight:700;color:var(--err);margin-top:6px}
-.q.bad .msg{display:block}
-input[type=text],input[type=email],input[type=tel],input[type=number],select,textarea{font:inherit;font-size:20px;font-weight:700;width:100%;padding:12px 14px;border:2px solid var(--line);border-radius:14px;background:var(--bg);color:var(--ink);-webkit-appearance:none;appearance:none}
-select{background-image:linear-gradient(45deg,transparent 50%,var(--teal) 50%),linear-gradient(135deg,var(--teal) 50%,transparent 50%);background-position:calc(100% - 20px) 55%,calc(100% - 14px) 55%;background-size:6px 6px;background-repeat:no-repeat;padding-right:34px}
-::placeholder{color:var(--ink2);opacity:.55;font-weight:500}
-.ymd select{padding-left:12px;padding-right:28px}
-textarea{font-weight:500;font-size:18px;min-height:130px;line-height:1.7}
-input:focus,select:focus,textarea:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 4px var(--soft)}
-.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.ymd{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:8px}
-.ymd label{font-size:14px;color:var(--ink2);font-weight:700}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Zen Maru Gothic","Hiragino Maru Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;font-size:18px;font-weight:500;line-height:1.7;overflow-x:hidden}
+.top{position:sticky;top:0;z-index:5;background:var(--card);border-bottom:1px solid var(--line)}
+.top .in{max-width:620px;margin:0 auto;padding:10px 16px 8px;display:flex;align-items:center;gap:12px}
+.top h1{margin:0;font-size:18px;font-weight:900;color:var(--deep);white-space:nowrap}
+.top .bar{flex:1;height:8px;border-radius:999px;background:var(--line);overflow:hidden}
+.top .bar i{display:block;height:100%;width:0;background:var(--teal);transition:width .25s}
+.top .cnt{font-size:15px;font-weight:700;color:var(--ink2);white-space:nowrap}
+.wrap{max-width:620px;margin:0 auto;padding:16px 16px 60px}
+.intro{font-size:16px;color:var(--ink2);margin:4px 2px 14px}
+.intro b{color:var(--ink)}
+.sec{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:6px 16px 16px;margin:0 0 14px}
+.sec h2{font-size:17px;font-weight:900;color:var(--deep);margin:10px 0 2px;padding-left:10px;border-left:4px solid var(--teal);line-height:1.4}
+.f{padding:12px 0 2px}
+.f+.f{border-top:1px dashed var(--line)}
+.f>label,.f>.lb{display:flex;align-items:center;gap:8px;font-weight:700;font-size:17px;margin-bottom:6px}
+.req{font-size:13.5px;font-weight:900;color:#fff;background:var(--teal);border-radius:5px;padding:0 6px;line-height:1.6}
+.opt{font-size:13.5px;font-weight:700;color:var(--ink2);border:1px solid var(--line);border-radius:5px;padding:0 6px;line-height:1.5}
+.hint{font-size:15px;color:var(--ink2);margin:-2px 0 6px}
+.msg{display:none;font-size:15px;font-weight:700;color:var(--err);margin-top:4px}
+.f.bad .msg{display:block}
+.f.bad input,.f.bad select,.f.bad textarea,.f.bad .seg{border-color:var(--err)}
+input[type=text],input[type=email],input[type=tel],input[type=number],select,textarea{font:inherit;font-size:18px;font-weight:700;width:100%;padding:10px 12px;border:1.5px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);-webkit-appearance:none;appearance:none}
+input::placeholder,textarea::placeholder{color:var(--ink2);opacity:.5;font-weight:500}
+select{background-image:linear-gradient(45deg,transparent 50%,var(--teal) 50%),linear-gradient(135deg,var(--teal) 50%,transparent 50%);background-position:calc(100% - 18px) 55%,calc(100% - 12px) 55%;background-size:6px 6px;background-repeat:no-repeat;padding-right:30px}
+textarea{font-weight:500;min-height:84px;line-height:1.6;resize:vertical}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 3px var(--soft)}
+.ymd{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:8px}
 .zip{display:grid;grid-template-columns:1fr auto;gap:8px}
-.zip button{font:inherit;font-size:16px;font-weight:900;border-radius:14px;border:2px solid var(--teal);background:var(--soft);color:var(--deep);padding:0 14px;cursor:pointer;white-space:nowrap}
-.tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}
-.tiles.c2{grid-template-columns:1fr 1fr}
-.tiles button{font:inherit;font-size:18px;font-weight:700;padding:12px 8px;border-radius:16px;border:2px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer;line-height:1.4;transition:all .15s}
-.tiles button:active{transform:scale(.97)}
-.tiles button.sel{background:var(--teal);border-color:var(--teal);color:#fff;box-shadow:0 4px 12px rgba(14,124,134,.25)}
-.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
-.chips button{font:inherit;font-size:16px;font-weight:700;padding:6px 14px;border-radius:999px;border:2px solid var(--line);background:var(--bg);color:var(--deep);cursor:pointer}
-.chips button.sel{background:var(--teal);border-color:var(--teal);color:#fff}
-.money{display:flex;align-items:center;gap:10px}
-.money input{width:170px;text-align:right;font-size:24px;font-weight:900}
-.money .u{font-weight:700;color:var(--ink2)}
-.nav{display:flex;gap:10px;margin:22px 0 0}
-.btn{font:inherit;font-size:19px;font-weight:900;padding:15px 18px;border-radius:999px;border:2px solid var(--line);background:var(--card);color:var(--deep);cursor:pointer;flex:1}
-.btn.main{background:var(--green);border-color:var(--green);color:#fff;flex:2;box-shadow:0 6px 16px rgba(6,199,85,.25)}
-.btn.main:disabled{background:var(--line);border-color:var(--line);color:var(--ink2);box-shadow:none;cursor:not-allowed}
-.agree{background:var(--card);border:2px solid var(--teal);border-radius:24px;padding:18px;margin:18px 0 0}
-.agree h3{margin:0 0 4px;font-size:21px;font-weight:900;color:var(--deep)}
-.agree .lead{font-size:16px;color:var(--ink2);margin:0 0 10px}
-.pt{display:grid;grid-template-columns:44px 1fr;gap:12px;padding:12px 0;border-top:1px dashed var(--line)}
-.pt .ic{width:44px;height:44px;border-radius:50%;background:var(--soft);display:grid;place-items:center;font-size:22px}
-.pt b{display:block;font-size:18px;color:var(--ink);line-height:1.5}
-.pt span{display:block;font-size:16px;color:var(--ink2);line-height:1.7;margin-top:2px}
-details{margin-top:6px;border-top:1px dashed var(--line);padding-top:10px}
-summary{cursor:pointer;font-weight:900;color:var(--teal);font-size:17px;list-style:none}
-summary::-webkit-details-marker{display:none}
-summary::before{content:"＋ "}
-details[open] summary::before{content:"－ "}
-.detail{font-size:15px;line-height:1.8;color:var(--ink);background:var(--soft);border-radius:14px;padding:12px 14px;margin-top:10px}
-.detail h4{font-size:16px;margin:12px 0 2px;color:var(--deep)}
+.zip button{font:inherit;font-size:15px;font-weight:700;border-radius:10px;border:1.5px solid var(--teal);background:var(--soft);color:var(--deep);padding:0 12px;cursor:pointer;white-space:nowrap}
+.unit{display:flex;align-items:center;gap:8px}
+.unit input{max-width:160px;text-align:right}
+.unit span{font-weight:700;color:var(--ink2)}
+.seg{display:flex;flex-wrap:wrap;gap:6px;border:1.5px solid transparent;border-radius:12px}
+.seg button{font:inherit;font-size:16px;font-weight:700;padding:7px 14px;border-radius:999px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer;line-height:1.4}
+.seg button.sel{background:var(--teal);border-color:var(--teal);color:#fff}
+.quick{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.quick button{font:inherit;font-size:15px;font-weight:700;padding:3px 12px;border-radius:999px;border:1px dashed var(--teal);background:transparent;color:var(--deep);cursor:pointer}
+.agree ul{margin:8px 0 4px;padding-left:1.2em;font-size:16px}
+.agree li{margin:2px 0}
+details{margin:6px 0 2px}
+summary{cursor:pointer;font-weight:700;color:var(--teal);font-size:15px}
+.detail{font-size:15px;line-height:1.75;background:var(--soft);border-radius:10px;padding:10px 12px;margin-top:8px}
+.detail h4{font-size:15px;margin:10px 0 2px;color:var(--deep)}
 .detail h4:first-child{margin-top:0}
 .detail p,.detail ul{margin:0}
-.detail ul{padding-left:1.2em}
+.detail ul{padding-left:1.2em;font-size:15px}
 .detail a{color:var(--teal);word-break:break-all}
-.check{display:flex;gap:12px;align-items:flex-start;margin-top:14px;padding:14px;border-radius:16px;background:var(--goldbg);border:2px solid var(--goldfill);cursor:pointer}
-.check input{width:28px;height:28px;flex:none;margin:2px 0 0;accent-color:var(--teal)}
-.check span{font-weight:900;font-size:17px;line-height:1.6}
-.sum{background:var(--card);border:2px solid var(--line);border-radius:22px;padding:6px 18px}
-.sum .line{display:grid;grid-template-columns:8.5em 1fr;gap:10px;padding:10px 0;border-bottom:1px dashed var(--line);font-size:17px}
+.check{display:flex;gap:10px;align-items:center;margin-top:10px;padding:12px;border-radius:12px;background:var(--goldbg);border:1.5px solid var(--goldfill);cursor:pointer;font-weight:900}
+.check input{width:24px;height:24px;flex:none;margin:0;accent-color:var(--teal)}
+.f.bad .check{border-color:var(--err)}
+.btn{font:inherit;font-size:18px;font-weight:900;padding:13px 18px;border-radius:999px;border:1.5px solid var(--line);background:var(--card);color:var(--deep);cursor:pointer;width:100%}
+.btn.main{background:var(--green);border-color:var(--green);color:#fff}
+.btn:disabled{opacity:.6;cursor:wait}
+.row2{display:grid;grid-template-columns:1fr 2fr;gap:10px;margin-top:14px}
+.sum{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:4px 16px}
+.sum .line{display:grid;grid-template-columns:7.5em 1fr;gap:10px;padding:9px 0;border-bottom:1px dashed var(--line);font-size:16px}
 .sum .line:last-child{border-bottom:0}
 .sum .line span{color:var(--ink2);font-weight:700}
 .sum .line b{word-break:break-word;white-space:pre-wrap}
-.ok{background:var(--goldbg);border:2px solid var(--goldfill);border-radius:16px;padding:14px 18px;font-size:17px;margin-top:10px}
-.note{font-size:15px;color:var(--ink2)}
-.next{display:grid;gap:10px;margin:14px 0}
-.next .n{display:grid;grid-template-columns:40px 1fr;gap:12px;align-items:start;background:var(--card);border:2px solid var(--line);border-radius:18px;padding:14px}
-.next .n i{font-style:normal;width:40px;height:40px;border-radius:50%;background:var(--teal);color:#fff;display:grid;place-items:center;font-weight:900}
-.next .n b{display:block;font-size:18px}
-.next .n span{font-size:16px;color:var(--ink2)}
-.card{display:grid;grid-template-columns:72px 1fr;gap:14px;align-items:center;text-decoration:none;color:inherit;background:var(--card);border:2px solid var(--teal);border-radius:20px;padding:14px;margin-top:6px}
-.card img{width:72px;height:auto}
-.card b{display:block;color:var(--deep);font-size:18px;line-height:1.5}
-.card span{font-size:15px;color:var(--ink2)}
-.card em{font-style:normal;font-weight:900;color:var(--teal);font-size:16px}
-@media (max-width:480px){.head{grid-template-columns:76px 1fr}.head img{width:76px}.gets div{font-size:14px}.tiles{grid-template-columns:1fr 1fr}.sum .line{grid-template-columns:1fr;gap:0}}
-@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+.ok{background:var(--goldbg);border:1.5px solid var(--goldfill);border-radius:12px;padding:12px 14px;font-size:16px;margin-top:10px}
+.done{text-align:center;padding:20px 0 6px}
+.done img{width:110px;height:auto}
+.done h2{margin:4px 0;font-size:24px;color:var(--deep)}
+.view{display:none}.view.on{display:block}
+a.lk{color:var(--teal);font-weight:700}
+@media (max-width:480px){.sum .line{grid-template-columns:1fr;gap:0}}
 </style>
 </head>
 <body>
-<div class="top"><div class="in"><div class="steplabel"><span id="sl">はじめに</span><span id="sn">1 / 6</span></div><div class="prog" id="prog"><span class="on"></span><span></span><span></span><span></span><span></span><span></span></div></div></div>
+<div class="top"><div class="in"><h1>ヒアリングシート</h1><div class="bar"><i id="bar"></i></div><span class="cnt" id="cnt">0 / 14</span></div></div>
 <main class="wrap">
 
-<!-- 0 はじめに＋同意 -->
-<section class="step on" data-step="0">
-<div class="hero">
-<img src="mascot_invite.webp" alt="">
-<div class="tag">3分ほど・タップ中心</div>
-<h1>ヒアリングシート</h1>
-<p>ご相談の前に、少しだけ教えてください。<br>当日のお話の準備に使います。</p>
+<div class="view on" id="vForm">
+<p class="intro"><b>fulfull株式会社</b><br>シミュレーション作成のため、ご入力をお願いします（3分ほど）。</p>
+
+<div class="sec"><h2>ご本人について</h2>
+<div class="f" data-need="name"><label for="name">お名前<span class="req">必須</span></label><input id="name" type="text" autocomplete="name" placeholder="山田 花子" enterkeyhint="next"><div class="msg">お名前を入れてください</div></div>
+<div class="f" data-need="kana"><label for="kana">フリガナ<span class="req">必須</span></label><input id="kana" type="text" placeholder="ヤマダ ハナコ" enterkeyhint="next"><div class="msg">フリガナを入れてください</div></div>
+<div class="f" data-need="birth"><div class="lb">生年月日<span class="req">必須</span></div><div class="ymd"><select id="by" aria-label="年"></select><select id="bm" aria-label="月"></select><select id="bd" aria-label="日"></select></div><div class="msg">生年月日を選んでください</div></div>
+<div class="f" data-need="sex"><div class="lb">性別<span class="req">必須</span></div><div class="seg" data-k="sex"><button type="button">男性</button><button type="button">女性</button></div><div class="msg">選んでください</div></div>
 </div>
 
-<div class="agree" id="agreeBox">
-<h3>お預かりする情報の使い方</h3>
-<p class="lead">大事なところを3つにまとめました。</p>
-<div class="pt"><div class="ic">🔒</div><div><b>ご相談のためだけに使います</b><span>お金のシミュレーションづくり、ご提案、ご連絡に使います。</span></div></div>
-<div class="pt"><div class="ic">🤖</div><div><b>シミュレーションの計算は、AIがお手伝いします</b><span>入力内容はAIの学習には使われない設定です。<br>できあがった資料は、担当者が中身を確かめてからお渡しします。</span></div></div>
-<div class="pt"><div class="ic">🤝</div><div><b>許可なく、ほかへ渡しません</b><span>保険のお申し込みに進むときだけ、保険会社へお伝えします。<br>そのときは改めて確認します。</span></div></div>
-<details>
-<summary>くわしい内容を読む</summary>
+<div class="sec"><h2>ご連絡先</h2>
+<div class="f" data-need="email"><label for="email">メールアドレス<span class="req">必須</span></label><input id="email" type="email" autocomplete="email" inputmode="email" placeholder="hanako@example.com" enterkeyhint="next"><div class="msg">メールアドレスの形を確かめてください</div></div>
+<div class="f" data-need="tel"><label for="tel">電話番号<span class="req">必須</span></label><input id="tel" type="tel" autocomplete="tel" inputmode="tel" placeholder="09012345678" enterkeyhint="next"><div class="msg">電話番号を確かめてください</div></div>
+<div class="f" data-need="zip"><label for="zip">郵便番号<span class="req">必須</span></label><div class="hint">7けたで住所が自動で入ります</div><div class="zip"><input id="zip" type="text" inputmode="numeric" autocomplete="postal-code" placeholder="2270034" maxlength="8" enterkeyhint="next"><button type="button" id="zipbtn">住所を入れる</button></div><div class="msg">郵便番号は7けたです</div></div>
+<div class="f" data-need="addr"><label for="addr">ご住所<span class="req">必須</span></label><input id="addr" type="text" autocomplete="street-address" placeholder="番地・建物名まで" enterkeyhint="next"><div class="msg">ご住所を入れてください</div></div>
+</div>
+
+<div class="sec"><h2>お仕事・ご家族</h2>
+<div class="f" data-need="job"><label for="job">お仕事の内容<span class="req">必須</span></label><input id="job" type="text" placeholder="営業職、事務職、経営者など" enterkeyhint="next"><div class="msg">入れてください</div></div>
+<div class="f" data-need="head"><div class="lb">世帯主の方のご状況<span class="req">必須</span></div><div class="seg" data-k="head"><button type="button">会社員</button><button type="button">公務員</button><button type="button">自営</button><button type="button">パート・アルバイト</button><button type="button">年金受給</button><button type="button">その他</button></div><div class="msg">選んでください</div></div>
+<div class="f" data-need="spouse"><div class="lb">配偶者の方のご状況<span class="req">必須</span></div><div class="seg" data-k="spouse"><button type="button">正社員</button><button type="button">公務員</button><button type="button">自営業</button><button type="button">パート</button><button type="button">専業主婦・主夫</button><button type="button">その他</button><button type="button">配偶者なし</button></div><div class="msg">選んでください</div></div>
+<div class="f" data-need="income"><label for="income">年収（税込み・おおよそ）<span class="req">必須</span></label><div class="unit"><input id="income" type="number" inputmode="numeric" placeholder="500" enterkeyhint="next"><span>万円</span></div><div class="msg">入れてください</div></div>
+<div class="f" data-need="family"><label for="family">ご家族<span class="req">必須</span></label><div class="hint">一緒に暮らしている方を年齢つきで</div><input id="family" type="text" placeholder="妻40歳、長男10歳、長女4歳" enterkeyhint="next"><div class="quick" data-set="family"><button type="button">ひとり暮らし</button></div><div class="msg">入れてください</div></div>
+<div class="f" data-need="house"><div class="lb">お住まい<span class="req">必須</span></div><div class="seg" data-k="house"><button type="button">持ち家</button><button type="button">賃貸</button></div><div class="msg">選んでください</div></div>
+</div>
+
+<div class="sec"><h2>そのほか</h2>
+<div class="f"><label for="hoken">ご加入中の保険<span class="opt">任意</span></label><div class="hint">証券をお預かり済みの方は空欄でOKです</div><textarea id="hoken" placeholder="アフラック がん保険、東京海上 変額保険"></textarea></div>
+<div class="f"><label for="ask">ご質問・ご要望<span class="opt">任意</span></label><textarea id="ask"></textarea></div>
+</div>
+
+<div class="sec agree"><h2>個人情報の取り扱い</h2>
+<ul>
+<li>シミュレーションの作成・ご提案・ご連絡のためだけに使います。</li>
+<li>計算にはAIを使います（学習には使われない設定）。資料は担当者が確かめてからお渡しします。</li>
+<li>同意なく、ほかの会社へ渡しません。</li>
+</ul>
+<details><summary>くわしい内容</summary>
 <div class="detail">
 <h4>運営しているのは</h4>
 <p>fulfull株式会社（保険代理店）<br>神奈川県横浜市青葉区大場町174-121　代表 森川 満章</p>
@@ -149,9 +136,9 @@ details[open] summary::before{content:"－ "}
 <h4>見るのは誰か</h4>
 <p>担当の森川と、当社の保険スタッフ（募集人）だけです。</p>
 <h4>使っているAIについて（法律で決まっているお知らせ）</h4>
-<p>シミュレーションの計算と、保険証券の写真の読み取りには、AI「Claude」を使っています。<br>Claudeはアメリカの会社のサービスです。<br>海外のサービスを使うときは、次のことをお知らせするよう法律（個人情報保護法第28条）で決まっています。</p>
+<p>シミュレーションの計算と、保険証券の写真の読み取りには、アメリカの会社のAI「Claude」を使っています。<br>海外のサービスを使うときは、次のことをお知らせするよう法律（個人情報保護法第28条）で決まっています。</p>
 <ul>
-<li>会社：Anthropic, PBC（Claudeの運営元）</li>
+<li>会社：Anthropic, PBC</li>
 <li>国：アメリカ合衆国</li>
 <li>アメリカの個人情報のルール：国全体をまとめて定める個人情報保護の法律はなく、分野ごと・州ごとの法律で守られています。くわしくは個人情報保護委員会のページをご覧ください。<br><a href="https://www.ppc.go.jp/enforcement/infoprovision/laws/offshore_report_america/" target="_blank" rel="noopener">個人情報保護委員会「外国制度（アメリカ合衆国）」</a></li>
 <li>守るための設定：入力内容をAIの学習に使わない設定にしています。この設定では、やり取りの内容は原則30日で削除されます（安全上の確認が必要な場合を除く）。<br><a href="https://www.anthropic.com/legal/privacy" target="_blank" rel="noopener">Anthropic社のプライバシーポリシー</a></li>
@@ -167,126 +154,72 @@ details[open] summary::before{content:"－ "}
 <h4>お問い合わせ・開示などのご希望</h4>
 <p>fulfull0605@gmail.com<br><a href="https://fulfull.jp/privacy-policy-hoken/" target="_blank" rel="noopener">プライバシーポリシー（全文）</a></p>
 </div>
+
 </details>
-<label class="check"><input type="checkbox" id="agree"><span>内容を確認し、同意します</span></label>
+<div class="f" data-need="agree" style="border:0;padding-top:4px"><label class="check"><input type="checkbox" id="agree">内容を確認し、同意します</label><div class="msg">同意のチェックをお願いします</div></div>
 </div>
 <input type="text" id="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
-<div class="nav"><button class="btn main" type="button" id="start" disabled>同意してはじめる</button></div>
-<p class="note" style="text-align:center;margin-top:10px">チェックを入れると押せるようになります</p>
-</section>
+<button class="btn main" type="button" id="toConfirm">入力内容を確認する</button>
+</div>
 
-<!-- 1 あなたのこと -->
-<section class="step" data-step="1">
-<div class="head"><img src="mascot_point.webp" alt=""><div><h2>あなたのこと</h2><p>年齢の計算に使います。</p></div></div>
-<div class="q" data-need="name"><div class="t">お名前<span class="req">必須</span></div><input id="name" type="text" autocomplete="name" placeholder="例）山田 花子"><div class="msg">お名前を入れてください</div></div>
-<div class="q" data-need="kana"><div class="t">フリガナ<span class="req">必須</span></div><input id="kana" type="text" placeholder="例）ヤマダ ハナコ"><div class="msg">フリガナを入れてください</div></div>
-<div class="q" data-need="birth"><div class="t">生年月日<span class="req">必須</span></div>
-<div class="ymd"><div><label for="by">年</label><select id="by"></select></div><div><label for="bm">月</label><select id="bm"></select></div><div><label for="bd">日</label><select id="bd"></select></div></div>
-<div class="msg">生年月日を選んでください</div></div>
-<div class="q" data-need="sex"><div class="t">性別<span class="req">必須</span></div><div class="hint">保険料の計算に使います</div><div class="tiles c2" data-k="sex"><button type="button">男性</button><button type="button">女性</button></div><div class="msg">どちらかを選んでください</div></div>
-<div class="nav"><button class="btn" type="button" data-go="0">もどる</button><button class="btn main" type="button" data-next="2">つぎへ</button></div>
-</section>
-
-<!-- 2 ご連絡先 -->
-<section class="step" data-step="2">
-<div class="head"><img src="mascot_invite.webp" alt=""><div><h2>ご連絡先</h2><p>資料ができたら、こちらにご連絡します。</p></div></div>
-<div class="q" data-need="email"><div class="t">メールアドレス<span class="req">必須</span></div><input id="email" type="email" autocomplete="email" inputmode="email" placeholder="例）hanako@example.com"><div class="msg">メールアドレスの形を確かめてください</div></div>
-<div class="q" data-need="tel"><div class="t">電話番号<span class="req">必須</span></div><div class="hint">ハイフンはなくても大丈夫です</div><input id="tel" type="tel" autocomplete="tel" inputmode="tel" placeholder="例）09012345678"><div class="msg">電話番号を確かめてください</div></div>
-<div class="q" data-need="zip"><div class="t">郵便番号<span class="req">必須</span></div><div class="hint">7けたで住所が自動で入ります</div><div class="zip"><input id="zip" type="text" inputmode="numeric" autocomplete="postal-code" placeholder="例）2270034" maxlength="8"><button type="button" id="zipbtn">住所を入れる</button></div><div class="msg">郵便番号は7けたです</div></div>
-<div class="q" data-need="addr"><div class="t">ご住所<span class="req">必須</span></div><div class="hint">番地・建物名まで</div><input id="addr" type="text" autocomplete="street-address" placeholder="例）神奈川県横浜市青葉区◯◯ 1-2-3"><div class="msg">ご住所を入れてください</div></div>
-<div class="nav"><button class="btn" type="button" data-go="1">もどる</button><button class="btn main" type="button" data-next="3">つぎへ</button></div>
-</section>
-
-<!-- 3 お仕事とご家族 -->
-<section class="step" data-step="3">
-<div class="head"><img src="mascot_think.webp" alt=""><div><h2>お仕事とご家族</h2><p>タップで選ぶだけの質問がほとんどです。</p></div></div>
-<div class="q" data-need="job"><div class="t">お仕事の内容<span class="req">必須</span></div><div class="hint">例）営業職、事務職、経営者など</div><input id="job" type="text" placeholder="例）営業職"><div class="msg">お仕事の内容を入れてください</div></div>
-<div class="q" data-need="head"><div class="t">世帯主の方のご状況<span class="req">必須</span></div><div class="tiles" data-k="head"><button type="button">会社員</button><button type="button">公務員</button><button type="button">自営</button><button type="button">パート</button><button type="button">年金受給</button><button type="button">その他</button></div><div class="msg">1つ選んでください</div></div>
-<div class="q" data-need="spouse"><div class="t">配偶者の方のご状況<span class="req">必須</span></div><div class="tiles" data-k="spouse"><button type="button">正社員</button><button type="button">公務員</button><button type="button">自営業</button><button type="button">パート</button><button type="button">専業主婦・主夫</button><button type="button">その他</button><button type="button">配偶者なし</button></div><div class="msg">1つ選んでください</div></div>
-<div class="q" data-need="income"><div class="t">あなたの年収<span class="req">必須</span></div><div class="hint">税込みのおおよそで大丈夫です</div><div class="money"><input id="income" type="number" inputmode="numeric" placeholder="0"><span class="u">万円</span></div><div class="chips" data-for="income"><button type="button">300</button><button type="button">400</button><button type="button">500</button><button type="button">600</button><button type="button">800</button><button type="button">1000</button></div><div class="msg">おおよその年収を入れてください</div></div>
-<div class="q" data-need="family"><div class="t">ご家族<span class="req">必須</span></div><div class="hint">一緒に暮らしている方を、年齢つきで</div><textarea id="family" placeholder="例）妻40歳、長男10歳、長女4歳" style="min-height:90px"></textarea><div class="chips" data-add="family"><button type="button">ひとり暮らし</button><button type="button">夫</button><button type="button">妻</button><button type="button">長男</button><button type="button">長女</button><button type="button">次男</button><button type="button">次女</button></div><div class="msg">ご家族と年齢を入れてください（ひとり暮らしならボタンを押すだけ）</div></div>
-<div class="q" data-need="house"><div class="t">お住まい<span class="req">必須</span></div><div class="tiles c2" data-k="house"><button type="button">持ち家</button><button type="button">賃貸</button></div><div class="msg">どちらかを選んでください</div></div>
-<div class="nav"><button class="btn" type="button" data-go="2">もどる</button><button class="btn main" type="button" data-next="4">つぎへ</button></div>
-</section>
-
-<!-- 4 いまの保険と知りたいこと -->
-<section class="step" data-step="4">
-<div class="head"><img src="mascot_point.webp" alt=""><div><h2>いまの保険と、知りたいこと</h2><p>分かる範囲で大丈夫です。</p></div></div>
-<div class="q" data-need="hoken"><div class="t">入っている保険<span class="req">必須</span></div><div class="hint">会社名と種類を、分かる範囲で。いくつでもどうぞ</div><textarea id="hoken" placeholder="例）アフラック がん保険、東京海上 変額保険"></textarea><div class="chips" data-set="hoken"><button type="button">入っていない</button><button type="button">分からない（証券を送ります）</button></div><div class="msg">分からなければ、下のボタンを押すだけで大丈夫です</div></div>
-<div class="ok" style="margin:4px 0 14px">📷 保険証券は、写真をLINEで送っていただければこちらで読み取ります。<br>ここで細かく書かなくても大丈夫です。</div>
-<div class="q"><div class="t">知りたいこと<span class="opt">任意</span></div><textarea id="ask" placeholder="例）教育費と老後のお金、どちらを先に考えればいい？"></textarea><div class="chips" data-add="ask"><button type="button">保険料が高い気がする</button><button type="button">老後のお金が心配</button><button type="button">教育費の準備</button><button type="button">NISAの始め方</button><button type="button">住宅ローンとの両立</button></div></div>
-<div class="nav"><button class="btn" type="button" data-go="3">もどる</button><button class="btn main" type="button" data-next="5">確認へ</button></div>
-</section>
-
-<!-- 5 確認 -->
-<section class="step" data-step="5">
-<div class="head"><img src="mascot_think.webp" alt=""><div><h2>この内容で送ります</h2><p>直したいところは「もどる」で戻れます。</p></div></div>
+<div class="view" id="vConfirm">
+<p class="intro">この内容で送ります。</p>
 <div class="sum" id="sum"></div>
-<div class="nav"><button class="btn" type="button" data-go="4">もどる</button><button class="btn main" type="button" id="send">この内容で送る</button></div>
-<p class="note" id="err" style="display:none;color:var(--err)"></p>
-</section>
+<div class="row2"><button class="btn" type="button" id="back">直す</button><button class="btn main" type="button" id="send">送信する</button></div>
+</div>
 
-<!-- 6 完了 -->
-<section class="step" data-step="6">
-<div class="hero" style="padding-top:20px"><img src="mascot_base.webp" alt=""><h1 style="font-size:clamp(26px,6.4vw,34px)">受け付けました</h1><p id="doneMsg">ありがとうございました。<br>受付番号：<b id="no"></b></p></div>
+<div class="view" id="vDone">
+<div class="done"><img src="mascot_base.webp" alt=""><h2>送信しました</h2><p id="doneMsg">ありがとうございました。<br>受付番号：<b id="no"></b></p></div>
 <div id="fallback" style="display:none">
 <div class="ok">通信がうまくいかなかったため、文章で送っていただく形に切り替えました。<br>下のボタンでコピーしてLINEを開き、貼り付けて送信を押してください。</div>
-<button class="btn main" type="button" id="copy" style="width:100%;margin-top:14px">文章をコピーする</button>
+<button class="btn main" type="button" id="copy" style="margin-top:12px">文章をコピーする</button>
 <div class="ok" id="copied" style="display:none">コピーしました。<br>LINEを開いて貼り付け、送信を押すと届きます。</div>
-<textarea id="text" readonly style="margin-top:12px;min-height:120px;font-size:16px"></textarea>
+<textarea id="text" readonly style="margin-top:10px;min-height:120px;font-size:15px"></textarea>
 </div>
-<p style="margin-top:14px">当日までに、お話の準備をしておきます。<br>次の2つがあると、より具体的なお話ができます。</p>
-<div class="next">
-<div class="n"><i>1</i><div><b>保険証券の写真をLINEで</b><span>表と裏、1本ずつ。会社がバラバラでも大丈夫です。</span></div></div>
-<div class="n"><i>2</i><div><b>家計の数字をざっくり</b><span>分からない欄は「あとで」で大丈夫。5分ほどです。</span></div></div>
+<p>シミュレーションができましたら、ご連絡します。<br>入力内容を直したいときは、LINEでひとことお送りください。</p>
 </div>
-<a class="card" href="https://mm738966m-boop.github.io/kakei-hearing/"><img src="mascot_point.webp" alt=""><div><b>家計の数字 入力シート</b><span>毎月のお金・いまあるお金・将来のお金</span><br><em>入力をはじめる →</em></div></a>
-<p class="note" style="margin-top:18px">入れた内容を直したいときは、LINEでひとこと送っていただければ大丈夫です。</p>
-</section>
 </main>
 <script>
 const $=id=>document.getElementById(id);
 const API='';
-const VER='2026-10-21版b';
-const labels=['はじめに','あなたのこと','ご連絡先','お仕事とご家族','いまの保険','確認','受け付けました'];
+const VER='2026-10-21版c';
 const sel={};
-function go(n){document.querySelectorAll('.step').forEach(s=>s.classList.toggle('on',+s.dataset.step===n));const shown=Math.min(n,5);document.querySelectorAll('#prog span').forEach((b,i)=>{b.className=n===6||i<shown?'done':i===shown?'on':''});$('sl').textContent=labels[n];$('sn').textContent=n===6?'完了':(shown+1)+' / 6';window.scrollTo({top:0,behavior:'smooth'})}
-document.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>go(+b.dataset.go));
-// 同意
-$('agree').onchange=()=>{$('start').disabled=!$('agree').checked};
-$('start').onclick=()=>{if($('agree').checked)go(1)};
+const z2h=s=>s.replace(/[０-９＠．－]/g,c=>String.fromCharCode(c.charCodeAt(0)-0xFEE0));
 // 生年月日
-(()=>{const y=new Date().getFullYear();let h='<option value="">選ぶ</option>';for(let i=y-18;i>=y-85;i--){const w=i>=2019?'令和'+(i-2018):i>=1989?'平成'+(i-1988):'昭和'+(i-1925);h+=`<option value="${i}">${i}（${w.replace(/(令和|平成)1$/,'$1元')}）</option>`}$('by').innerHTML=h;let m='<option value="">－</option>';for(let i=1;i<=12;i++)m+=`<option>${i}</option>`;$('bm').innerHTML=m;const fd=()=>{const yy=+$('by').value||2000,mm=+$('bm').value||1,cur=$('bd').value,n=new Date(yy,mm,0).getDate();let d='<option value="">－</option>';for(let i=1;i<=n;i++)d+=`<option${String(i)===cur?' selected':''}>${i}</option>`;$('bd').innerHTML=d};fd();$('by').onchange=fd;$('bm').onchange=fd})();
-// タイル
-document.querySelectorAll('.tiles').forEach(t=>t.querySelectorAll('button').forEach(b=>b.onclick=()=>{t.querySelectorAll('button').forEach(x=>x.classList.remove('sel'));b.classList.add('sel');sel[t.dataset.k]=b.textContent;t.closest('.q').classList.remove('bad')}));
-// 金額チップ
-document.querySelectorAll('.chips[data-for]').forEach(c=>{const inp=$(c.dataset.for);c.querySelectorAll('button').forEach(b=>b.onclick=()=>{inp.value=b.textContent;mark(c);inp.closest('.q').classList.remove('bad')});inp.addEventListener('input',()=>mark(c));function mark(c){c.querySelectorAll('button').forEach(x=>x.classList.toggle('sel',x.textContent===inp.value))}});
-// 追記チップ
-document.querySelectorAll('.chips[data-add]').forEach(c=>{const ta=$(c.dataset.add);c.querySelectorAll('button').forEach(b=>b.onclick=()=>{const w=b.textContent;if(w==='ひとり暮らし'){ta.value='ひとり暮らし'}else{const age=/^(長|次|三)/.test(w)||w==='夫'||w==='妻'?w+'　歳':w;ta.value=(ta.value.trim()&&ta.value.trim()!=='ひとり暮らし'?ta.value.trim()+'、':'')+age}ta.focus();const p=ta.value.lastIndexOf('　歳');if(p>=0)ta.setSelectionRange(p+1,p+1);ta.closest('.q').classList.remove('bad')})});
-document.querySelectorAll('.chips[data-set]').forEach(c=>{const ta=$(c.dataset.set);c.querySelectorAll('button').forEach(b=>b.onclick=()=>{ta.value=b.textContent;ta.closest('.q').classList.remove('bad')})});
+(()=>{const y=new Date().getFullYear();let h='<option value="">年</option>';for(let i=y-18;i>=y-85;i--){const w=i>=2019?'令和'+(i-2018):i>=1989?'平成'+(i-1988):'昭和'+(i-1925);h+=`<option value="${i}">${i}（${w.replace(/(令和|平成)1$/,'$1元')}）</option>`}$('by').innerHTML=h;let m='<option value="">月</option>';for(let i=1;i<=12;i++)m+=`<option value="${i}">${i}月</option>`;$('bm').innerHTML=m;const fd=()=>{const yy=+$('by').value||2000,mm=+$('bm').value||1,cur=$('bd').value,n=new Date(yy,mm,0).getDate();let d='<option value="">日</option>';for(let i=1;i<=n;i++)d+=`<option value="${i}"${String(i)===cur?' selected':''}>${i}日</option>`;$('bd').innerHTML=d};fd();$('by').addEventListener('change',fd);$('bm').addEventListener('change',fd)})();
+// 選択ボタン
+document.querySelectorAll('.seg').forEach(t=>t.querySelectorAll('button').forEach(b=>b.onclick=()=>{t.querySelectorAll('button').forEach(x=>x.classList.remove('sel'));b.classList.add('sel');sel[t.dataset.k]=b.textContent;t.closest('.f').classList.remove('bad');prog()}));
+document.querySelectorAll('.quick[data-set]').forEach(c=>{const el=$(c.dataset.set);c.querySelectorAll('button').forEach(b=>b.onclick=()=>{el.value=b.textContent;el.closest('.f').classList.remove('bad');prog()})});
 // 郵便番号→住所（zipcloud）
-function zen2han(s){return s.replace(/[０-９]/g,c=>String.fromCharCode(c.charCodeAt(0)-0xFEE0))}
-function lookup(){const z=zen2han($('zip').value).replace(/\D/g,'');if(z.length!==7){$('zip').closest('.q').classList.add('bad');return}$('zip').value=z;$('zip').closest('.q').classList.remove('bad');const cb='zc'+Date.now();window[cb]=r=>{delete window[cb];s.remove();if(r&&r.results&&r.results[0]){const a=r.results[0];const v=a.address1+a.address2+a.address3;if(!$('addr').value.startsWith(v)){$('addr').value=v}$('addr').focus();$('addr').setSelectionRange(9999,9999)}else{$('zipbtn').textContent='見つかりません'}};const s=document.createElement('script');s.src='https://zipcloud.ibsnet.co.jp/api/search?zipcode='+z+'&callback='+cb;s.onerror=()=>{$('zipbtn').textContent='手で入れてください'};document.body.appendChild(s)}
-$('zipbtn').onclick=lookup;$('zip').addEventListener('input',()=>{$('zipbtn').textContent='住所を入れる';if(zen2han($('zip').value).replace(/\D/g,'').length===7&&!$('addr').value)lookup()});
-// 入力チェック
+function lookup(){const z=z2h($('zip').value).replace(/\D/g,'');if(z.length!==7){$('zip').closest('.f').classList.add('bad');return}$('zip').value=z;$('zip').closest('.f').classList.remove('bad');const cb='zc'+Date.now();const s=document.createElement('script');window[cb]=r=>{delete window[cb];s.remove();if(r&&r.results&&r.results[0]){const a=r.results[0],v=a.address1+a.address2+a.address3;if(!$('addr').value.startsWith(v))$('addr').value=v;$('addr').focus();$('addr').setSelectionRange(9999,9999);prog()}else{$('zipbtn').textContent='見つかりません'}};s.src='https://zipcloud.ibsnet.co.jp/api/search?zipcode='+z+'&callback='+cb;s.onerror=()=>{$('zipbtn').textContent='手で入れてください'};document.body.appendChild(s)}
+$('zipbtn').onclick=lookup;$('zip').addEventListener('input',()=>{$('zipbtn').textContent='住所を入れる';if(z2h($('zip').value).replace(/\D/g,'').length===7&&!$('addr').value)lookup()});
+// チェック
 const V={name:()=>$('name').value.trim(),kana:()=>$('kana').value.trim(),birth:()=>$('by').value&&$('bm').value&&$('bd').value,sex:()=>sel.sex,
-email:()=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(zen2han($('email').value.trim())),tel:()=>zen2han($('tel').value).replace(/\D/g,'').length>=10,zip:()=>zen2han($('zip').value).replace(/\D/g,'').length===7,addr:()=>$('addr').value.trim().length>=4,
-job:()=>$('job').value.trim(),head:()=>sel.head,spouse:()=>sel.spouse,income:()=>$('income').value!=='',family:()=>$('family').value.trim()&&!/\s歳/.test($('family').value),house:()=>sel.house,hoken:()=>$('hoken').value.trim()};
-document.querySelectorAll('input,textarea,select').forEach(el=>el.addEventListener('input',()=>{const q=el.closest('.q');if(q&&q.dataset.need&&V[q.dataset.need]())q.classList.remove('bad')}));
-function check(scope){let first=null;scope.querySelectorAll('.q[data-need]').forEach(q=>{const ok=!!V[q.dataset.need]();q.classList.toggle('bad',!ok);if(!ok&&!first)first=q});return first}
-document.querySelectorAll('[data-next]').forEach(b=>b.onclick=()=>{let first=check(b.closest('.step'));const n=+b.dataset.next;if(!first&&n===5)first=check(document);if(first){const st=+first.closest('.step').dataset.step;if(!first.closest('.step').classList.contains('on'))go(st);setTimeout(()=>first.scrollIntoView({behavior:'smooth',block:'center'}),50);return}if(n===5)build();go(n)});
+email:()=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(z2h($('email').value.trim())),tel:()=>z2h($('tel').value).replace(/\D/g,'').length>=10,zip:()=>z2h($('zip').value).replace(/\D/g,'').length===7,addr:()=>$('addr').value.trim().length>=4,
+job:()=>$('job').value.trim(),head:()=>sel.head,spouse:()=>sel.spouse,income:()=>$('income').value!=='',family:()=>$('family').value.trim(),house:()=>sel.house,agree:()=>$('agree').checked};
+const KEYS=Object.keys(V).filter(k=>k!=='agree');
+function prog(){const n=KEYS.filter(k=>V[k]()).length;$('cnt').textContent=n+' / '+KEYS.length;$('bar').style.width=(n/KEYS.length*100)+'%'}
+document.querySelectorAll('input,select,textarea').forEach(el=>{el.addEventListener('input',()=>{const f=el.closest('.f');if(f&&f.dataset.need&&V[f.dataset.need]())f.classList.remove('bad');prog()});el.addEventListener('change',()=>{const f=el.closest('.f');if(f&&f.dataset.need&&V[f.dataset.need]())f.classList.remove('bad');prog()})});
+// Enterで次の欄へ
+const order=[...document.querySelectorAll('#vForm input[type=text]:not(#website),#vForm input[type=email],#vForm input[type=tel],#vForm input[type=number]')];
+order.forEach((el,i)=>el.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.isComposing){e.preventDefault();if(el.id==='zip')lookup();const nx=order[i+1];if(nx)nx.focus();else el.blur()}}));
+function show(id){document.querySelectorAll('.view').forEach(v=>v.classList.toggle('on',v.id===id));window.scrollTo({top:0,behavior:'smooth'})}
 let data={};
-function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
-function build(){const birth=$('by').value+'/'+$('bm').value+'/'+$('bd').value;
- data={form:'soudan-check',ver:VER,agree:true,agreedAt:new Date().toISOString(),website:$('website').value,name:$('name').value.trim(),kana:$('kana').value.trim(),birth,sex:sel.sex,email:zen2han($('email').value.trim()),tel:zen2han($('tel').value).replace(/\D/g,''),zip:zen2han($('zip').value).replace(/\D/g,''),addr:$('addr').value.trim(),job:$('job').value.trim(),head:sel.head,spouse:sel.spouse,income:$('income').value,family:$('family').value.trim(),house:sel.house,hoken:$('hoken').value.trim(),ask:$('ask').value.trim(),src:location.href.split('?')[0]};
- const rows=[['お名前',data.name+'（'+data.kana+'）'],['生年月日',birth],['性別',data.sex],['メール',data.email],['電話',data.tel],['ご住所','〒'+data.zip+' '+data.addr],['お仕事',data.job],['世帯主の方',data.head],['配偶者の方',data.spouse],['あなたの年収',data.income+'万円'],['ご家族',data.family],['お住まい',data.house],['入っている保険',data.hoken],['知りたいこと',data.ask||'—'],['同意','済み（'+VER+'）']];
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+$('toConfirm').onclick=()=>{let first=null;document.querySelectorAll('#vForm .f[data-need]').forEach(f=>{const ok=!!V[f.dataset.need]();f.classList.toggle('bad',!ok);if(!ok&&!first)first=f});if(first){first.scrollIntoView({behavior:'smooth',block:'center'});return}
+ const birth=$('by').value+'/'+$('bm').value+'/'+$('bd').value;
+ data={form:'soudan-check',ver:VER,agree:true,agreedAt:new Date().toISOString(),website:$('website').value,name:$('name').value.trim(),kana:$('kana').value.trim(),birth,sex:sel.sex,email:z2h($('email').value.trim()),tel:z2h($('tel').value).replace(/\D/g,''),zip:z2h($('zip').value).replace(/\D/g,''),addr:$('addr').value.trim(),job:$('job').value.trim(),head:sel.head,spouse:sel.spouse,income:$('income').value,family:$('family').value.trim(),house:sel.house,hoken:$('hoken').value.trim(),ask:$('ask').value.trim(),src:location.href.split('?')[0].split('#')[0]};
+ const rows=[['お名前',data.name+'（'+data.kana+'）'],['生年月日',birth],['性別',data.sex],['メール',data.email],['電話',data.tel],['ご住所','〒'+data.zip+' '+data.addr],['お仕事',data.job],['世帯主の方',data.head],['配偶者の方',data.spouse],['年収',data.income+'万円'],['ご家族',data.family],['お住まい',data.house],['ご加入中の保険',data.hoken||'—'],['ご質問・ご要望',data.ask||'—'],['個人情報','同意済み（'+VER+'）']];
  $('sum').innerHTML=rows.map(r=>`<div class="line"><span>${r[0]}</span><b>${esc(r[1])}</b></div>`).join('');
- $('text').value=['【ご相談前のチェックシート】'+new Date().toLocaleDateString('ja-JP')].concat(rows.map(r=>r[0]+'：'+r[1])).join('\n')}
-$('send').onclick=async()=>{const b=$('send');b.disabled=true;b.textContent='送っています…';
+ $('text').value=['【ヒアリングシート】'+new Date().toLocaleDateString('ja-JP')].concat(rows.map(r=>r[0]+'：'+r[1])).join('\n');
+ show('vConfirm')};
+$('back').onclick=()=>show('vForm');
+$('send').onclick=async()=>{const b=$('send');b.disabled=true;b.textContent='送信中…';
  try{if(!API)throw new Error('no api');const r=await fetch(API,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(data)});const j=await r.json();if(!j.ok)throw new Error(j.error||'error');$('no').textContent=j.no;$('fallback').style.display='none'}
  catch(e){$('doneMsg').innerHTML='ありがとうございました。<br>あと1つだけ、下の手順をお願いします。';$('fallback').style.display=''}
- b.disabled=false;b.textContent='この内容で送る';go(6)};
+ b.disabled=false;b.textContent='送信する';$('bar').style.width='100%';show('vDone')};
 $('copy').onclick=async()=>{try{await navigator.clipboard.writeText($('text').value)}catch(e){$('text').select();document.execCommand('copy')}$('copied').style.display=''};
+prog();
 </script>
 </body>
 </html>
