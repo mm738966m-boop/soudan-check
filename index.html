@@ -57,8 +57,10 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--teal);bo
 .quick button{font:inherit;font-size:15px;font-weight:700;padding:3px 12px;border-radius:999px;border:1px dashed var(--teal);background:transparent;color:var(--deep);cursor:pointer}
 .agree ul{margin:8px 0 4px;padding-left:1.2em;font-size:16px}
 .agree li{margin:2px 0}
-details{margin:6px 0 2px}
-summary{cursor:pointer;font-weight:700;color:var(--teal);font-size:15px}
+.more{font:inherit;width:100%;display:flex;justify-content:space-between;align-items:center;margin:8px 0 2px;padding:10px 14px;border-radius:10px;border:1.5px solid var(--line);background:var(--card);color:var(--teal);font-size:16px;font-weight:700;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.more span{transition:transform .2s}
+.more[aria-expanded="true"] span{transform:rotate(180deg)}
+.detail[hidden]{display:none}
 .detail{font-size:15px;line-height:1.75;background:var(--soft);border-radius:10px;padding:10px 12px;margin-top:8px}
 .detail h4{font-size:15px;margin:10px 0 2px;color:var(--deep)}
 .detail h4:first-child{margin-top:0}
@@ -127,8 +129,8 @@ a.lk{color:var(--teal);font-weight:700}
 <li>計算にはAIを使います（学習には使われない設定）。資料は担当者が確かめてからお渡しします。</li>
 <li>同意なく、ほかの会社へ渡しません。</li>
 </ul>
-<details><summary>くわしい内容</summary>
-<div class="detail">
+<button type="button" class="more" id="moreBtn" aria-expanded="false" aria-controls="detailBox">くわしい内容を見る<span>▼</span></button>
+<div class="detail" id="detailBox" hidden>
 <h4>運営しているのは</h4>
 <p>fulfull株式会社（保険代理店）<br>神奈川県横浜市青葉区大場町174-121　代表 森川 満章</p>
 <h4>お預かりした情報を使う目的</h4>
@@ -154,8 +156,6 @@ a.lk{color:var(--teal);font-weight:700}
 <h4>お問い合わせ・開示などのご希望</h4>
 <p>fulfull0605@gmail.com<br><a href="https://fulfull.jp/privacy-policy-hoken/" target="_blank" rel="noopener">プライバシーポリシー（全文）</a></p>
 </div>
-
-</details>
 <div class="f" data-need="agree" style="border:0;padding-top:4px"><label class="check"><input type="checkbox" id="agree">内容を確認し、同意します</label><div class="msg">同意のチェックをお願いします</div></div>
 </div>
 <input type="text" id="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
@@ -219,6 +219,7 @@ $('send').onclick=async()=>{const b=$('send');b.disabled=true;b.textContent='送
  catch(e){$('doneMsg').innerHTML='ありがとうございました。<br>あと1つだけ、下の手順をお願いします。';$('fallback').style.display=''}
  b.disabled=false;b.textContent='送信する';$('bar').style.width='100%';show('vDone')};
 $('copy').onclick=async()=>{try{await navigator.clipboard.writeText($('text').value)}catch(e){$('text').select();document.execCommand('copy')}$('copied').style.display=''};
+$('moreBtn').addEventListener('click',()=>{const b=$('moreBtn'),open=b.getAttribute('aria-expanded')!=='true';b.setAttribute('aria-expanded',String(open));$('detailBox').hidden=!open;b.firstChild.textContent=open?'くわしい内容を閉じる':'くわしい内容を見る'});
 prog();
 </script>
 </body>
