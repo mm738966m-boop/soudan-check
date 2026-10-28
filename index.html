@@ -50,8 +50,17 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--teal);bo
 .unit{display:flex;align-items:center;gap:8px}
 .unit input{max-width:160px;text-align:right}
 .unit span{font-weight:700;color:var(--ink2)}
-.incsum{display:flex;align-items:baseline;gap:10px;margin-top:10px;padding:8px 12px;border-radius:10px;background:var(--soft);font-size:16px;font-weight:700;color:var(--ink2)}
-.incsum b{font-size:20px;font-weight:900;color:var(--deep)}
+.f.inc2{border-top:0;padding-top:0}
+.inc2 .more{margin-top:2px}
+.inc2 .more b{font-weight:700;flex:1;text-align:left}
+.inc2 .more .opt{font-style:normal;margin-right:10px}
+.inc2box{display:grid;grid-template-rows:0fr;opacity:0;transition:grid-template-rows .22s ease,opacity .22s ease}
+.inc2box>div{overflow:hidden;padding:0 2px}
+.inc2box.open{grid-template-rows:1fr;opacity:1}
+.inc2box.open>div{padding:10px 2px 2px}
+.incsum{margin:8px 0 0;font-size:15px;font-weight:700;color:var(--ink2)}
+.incsum b{font-size:17px;font-weight:900;color:var(--deep);margin-left:4px}
+@media (prefers-reduced-motion:reduce){.inc2box{transition:none}}
 .seg{display:flex;flex-wrap:wrap;gap:6px;border:1.5px solid transparent;border-radius:12px}
 .seg button{font:inherit;font-size:16px;font-weight:700;padding:7px 14px;border-radius:999px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer;line-height:1.4}
 .seg button.sel{background:var(--teal);border-color:var(--teal);color:#fff}
@@ -124,7 +133,7 @@ a.lk{color:var(--teal);font-weight:700}
 <div class="f" data-need="head"><div class="lb">世帯主の方のご状況<span class="req">必須</span></div><div class="seg" data-k="head"><button type="button">会社員</button><button type="button">公務員</button><button type="button">自営</button><button type="button">パート・アルバイト</button><button type="button">年金受給</button><button type="button">その他</button></div><div class="msg">選んでください</div></div>
 <div class="f" data-need="spouse"><div class="lb">配偶者の方のご状況<span class="req">必須</span></div><div class="seg" data-k="spouse"><button type="button">正社員</button><button type="button">公務員</button><button type="button">自営業</button><button type="button">パート</button><button type="button">専業主婦・主夫</button><button type="button">その他</button><button type="button">配偶者なし</button></div><div class="msg">選んでください</div></div>
 <div class="f" data-need="income"><label for="income">ご本人の年収<span class="req">必須</span></label><div class="hint">税込み・おおよそでOKです。源泉徴収票の「支払金額」が目安。収入がなければ 0</div><div class="unit"><input id="income" type="number" inputmode="numeric" min="0" placeholder="500" enterkeyhint="next"><span>万円</span></div><div class="msg">入れてください（収入がなければ 0）</div></div>
-<div class="f" id="fInc2" hidden><label for="income2">配偶者の方の年収<span class="opt">任意</span></label><div class="hint">わからなければ空欄で大丈夫です</div><div class="unit"><input id="income2" type="number" inputmode="numeric" min="0" placeholder="300" enterkeyhint="next"><span>万円</span></div><div class="incsum" id="incSum" hidden>世帯の合計<b id="incSumV"></b></div></div>
+<div class="f inc2" id="fInc2" hidden><button type="button" class="more" id="inc2Btn" aria-expanded="false" aria-controls="inc2Box"><b id="inc2Lbl">＋ 配偶者の方の年収も入れる</b><i class="opt">任意</i><span>▼</span></button><div class="inc2box" id="inc2Box"><div><div class="hint">税込み・おおよそ。わからなければ空欄で大丈夫です</div><div class="unit"><input id="income2" type="number" inputmode="numeric" min="0" placeholder="300" enterkeyhint="next" tabindex="-1"><span>万円</span></div><p class="incsum" id="incSum" hidden>世帯の合計 <b id="incSumV"></b></p></div></div></div>
 <div class="f" data-need="family"><div class="lb">一緒に暮らしているご家族<span class="req">必須</span></div><div class="hint">続柄を押して、年齢を入れてください</div><div class="seg fam" id="famBtns"><button type="button">夫</button><button type="button">妻</button><button type="button">長男</button><button type="button">長女</button><button type="button">次男</button><button type="button">次女</button><button type="button">三男</button><button type="button">三女</button><button type="button">父</button><button type="button">母</button><button type="button">義父</button><button type="button">義母</button><button type="button">祖父</button><button type="button">祖母</button><button type="button">兄弟姉妹</button><button type="button">その他</button></div><div id="famList"></div><div class="seg" style="margin-top:8px"><button type="button" id="solo">ひとり暮らし</button></div><div class="msg">ご家族と年齢を入れてください（ひとり暮らしなら下のボタン）</div></div>
 <div class="f" data-need="house"><div class="lb">お住まい<span class="req">必須</span></div><div class="seg" data-k="house"><button type="button">持ち家</button><button type="button">賃貸</button></div><div class="msg">選んでください</div></div>
 </div>
@@ -221,12 +230,15 @@ const V={name:()=>$('name').value.trim(),kana:()=>$('kana').value.trim(),birth:(
 email:()=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(z2h($('email').value.trim())),tel:()=>z2h($('tel').value).replace(/\D/g,'').length>=10,zip:()=>z2h($('zip').value).replace(/\D/g,'').length===7,addr:()=>$('addr').value.trim().length>=4,
 job:()=>$('job').value.trim(),head:()=>sel.head,spouse:()=>sel.spouse,income:()=>$('income').value!=='',family:()=>famOK(),house:()=>sel.house,agree:()=>$('agree').checked};
 const KEYS=Object.keys(V).filter(k=>k!=='agree');
-function incUpd(){const has=!!sel.spouse&&sel.spouse!=='配偶者なし';$('fInc2').hidden=!has;if(!has)$('income2').value='';const a=$('income').value,b=$('income2').value;const on=has&&a!==''&&b!=='';$('incSum').hidden=!on;if(on)$('incSumV').textContent='約 '+(+a + +b).toLocaleString()+' 万円'}
+function incUpd(){const has=!!sel.spouse&&sel.spouse!=='配偶者なし';$('fInc2').hidden=!has;if(!has){$('income2').value='';inc2Open(false)}const a=$('income').value,b=$('income2').value;const on=has&&a!==''&&b!=='';$('incSum').hidden=!on;if(on)$('incSumV').textContent='約 '+(+a + +b).toLocaleString()+' 万円';
+ const open=$('inc2Btn').getAttribute('aria-expanded')==='true';document.querySelector('#inc2Btn .opt').hidden=!open&&b!=='';$('inc2Lbl').textContent=open?'配偶者の方の年収':b!==''?'配偶者 '+(+b).toLocaleString()+'万円'+(on?'・合計 '+(+a + +b).toLocaleString()+'万円':''):'＋ 配偶者の方の年収も入れる'}
+function inc2Open(o){$('inc2Btn').setAttribute('aria-expanded',String(o));$('inc2Box').classList.toggle('open',o);$('income2').tabIndex=o?0:-1}
+$('inc2Btn').onclick=()=>{const o=$('inc2Btn').getAttribute('aria-expanded')!=='true';inc2Open(o);incUpd();if(o)setTimeout(()=>$('income2').focus(),120)};
 function prog(){incUpd();const n=KEYS.filter(k=>V[k]()).length;$('cnt').textContent=n+' / '+KEYS.length;$('bar').style.width=(n/KEYS.length*100)+'%'}
 document.querySelectorAll('input,select,textarea').forEach(el=>{el.addEventListener('input',()=>{const f=el.closest('.f');if(f&&f.dataset.need&&V[f.dataset.need]())f.classList.remove('bad');prog()});el.addEventListener('change',()=>{const f=el.closest('.f');if(f&&f.dataset.need&&V[f.dataset.need]())f.classList.remove('bad');prog()})});
 // Enterで次の欄へ
 const order=[...document.querySelectorAll('#vForm input[type=text]:not(#website),#vForm input[type=email],#vForm input[type=tel],#vForm input[type=number]')];
-order.forEach((el,i)=>el.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.isComposing){e.preventDefault();if(el.id==='zip')lookup();const nx=order.slice(i+1).find(x=>x.offsetParent!==null);if(nx)nx.focus();else el.blur()}}));
+order.forEach((el,i)=>el.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.isComposing){e.preventDefault();if(el.id==='zip')lookup();const nx=order.slice(i+1).find(x=>x.offsetParent!==null&&x.tabIndex>=0);if(nx)nx.focus();else el.blur()}}));
 function show(id){document.querySelectorAll('.view').forEach(v=>v.classList.toggle('on',v.id===id));window.scrollTo({top:0,behavior:'smooth'})}
 let data={};
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
