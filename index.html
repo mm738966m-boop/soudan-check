@@ -50,21 +50,31 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--teal);bo
 .unit{display:flex;align-items:center;gap:8px}
 .unit input{max-width:160px;text-align:right}
 .unit span{font-weight:700;color:var(--ink2)}
-.f.inc2{border-top:0;padding-top:0}
-.inc2 .more{margin-top:2px}
-.inc2 .more b{font-weight:700;flex:1;text-align:left}
-.inc2 .more .opt{font-style:normal;margin-right:10px}
-.inc2box{display:grid;grid-template-rows:0fr;opacity:0;transition:grid-template-rows .22s ease,opacity .22s ease}
-.inc2box>div{overflow:hidden;padding:0 2px}
-.inc2box.open{grid-template-rows:1fr;opacity:1}
-.inc2box.open>div{padding:10px 2px 2px}
-.incsum{margin:8px 0 0;font-size:15px;font-weight:700;color:var(--ink2)}
-.incsum b{font-size:17px;font-weight:900;color:var(--deep);margin-left:4px}
-@media (prefers-reduced-motion:reduce){.inc2box{transition:none}}
+.incsum{display:flex;align-items:baseline;gap:10px;margin-top:10px;padding:8px 12px;border-radius:10px;background:var(--soft);font-size:16px;font-weight:700;color:var(--ink2)}
+.incsum b{font-size:20px;font-weight:900;color:var(--deep)}
+.incsum[hidden]{display:none}
 .seg{display:flex;flex-wrap:wrap;gap:6px;border:1.5px solid transparent;border-radius:12px}
 .seg button{font:inherit;font-size:16px;font-weight:700;padding:7px 14px;border-radius:999px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer;line-height:1.4}
 .seg button.sel{background:var(--teal);border-color:var(--teal);color:#fff}
 .fam button{padding:6px 12px}
+.famacts{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:8px}
+.addfam{font:inherit;font-size:16px;font-weight:700;padding:7px 16px;border-radius:999px;border:1.5px dashed var(--teal);background:var(--soft);color:var(--deep);cursor:pointer;line-height:1.4}
+.addfam[aria-expanded="true"]{border-style:solid;background:var(--teal);color:#fff}
+.addfam.wide{width:100%;border-radius:10px;padding:10px 14px;margin-top:8px}
+.fampick{display:grid;grid-template-rows:0fr;opacity:0;transition:grid-template-rows .2s ease,opacity .2s ease}
+.fampick>div{overflow:hidden}
+.fampick.open{grid-template-rows:1fr;opacity:1}
+.fampick.open>div{margin-top:8px;padding:10px;border:1.5px solid var(--line);border-radius:12px;background:var(--soft)}
+.pickhd{font-size:15px;font-weight:700;color:var(--ink2);margin:0 0 6px}
+.sec h2 .opt{margin-left:8px;vertical-align:2px}
+.mf{position:relative;margin-top:10px;padding:10px 12px 12px;border:1.5px solid var(--line);border-radius:12px;background:var(--soft)}
+.mf .hd{display:flex;justify-content:space-between;align-items:center;font-weight:900;color:var(--deep);margin-bottom:6px}
+.mf .x{font:inherit;font-size:15px;font-weight:700;border:0;background:transparent;color:var(--ink2);cursor:pointer;padding:4px}
+.mf .seg button{padding:5px 12px;font-size:15px}
+.mf .row{margin-top:8px}
+.mf .row>span{display:block;font-size:15px;font-weight:700;color:var(--ink2);margin-bottom:4px}
+.mf.ng{border-color:var(--err)}
+@media (prefers-reduced-motion:reduce){.fampick{transition:none}}
 .frow{display:grid;grid-template-columns:auto 1fr auto auto;gap:8px;align-items:center;margin-top:8px;padding:8px 10px;border:1.5px solid var(--line);border-radius:10px;background:var(--soft)}
 .frow .rel{font-weight:900;color:var(--deep);min-width:3em}
 .frow input.relin{width:5.5em;padding:6px 8px;font-size:16px}
@@ -133,14 +143,18 @@ a.lk{color:var(--teal);font-weight:700}
 <div class="f" data-need="head"><div class="lb">世帯主の方のご状況<span class="req">必須</span></div><div class="seg" data-k="head"><button type="button">会社員</button><button type="button">公務員</button><button type="button">自営</button><button type="button">パート・アルバイト</button><button type="button">年金受給</button><button type="button">その他</button></div><div class="msg">選んでください</div></div>
 <div class="f" data-need="spouse"><div class="lb">配偶者の方のご状況<span class="req">必須</span></div><div class="seg" data-k="spouse"><button type="button">正社員</button><button type="button">公務員</button><button type="button">自営業</button><button type="button">パート</button><button type="button">専業主婦・主夫</button><button type="button">その他</button><button type="button">配偶者なし</button></div><div class="msg">選んでください</div></div>
 <div class="f" data-need="income"><label for="income">ご本人の年収<span class="req">必須</span></label><div class="hint">税込み・おおよそでOKです。源泉徴収票の「支払金額」が目安。収入がなければ 0</div><div class="unit"><input id="income" type="number" inputmode="numeric" min="0" placeholder="500" enterkeyhint="next"><span>万円</span></div><div class="msg">入れてください（収入がなければ 0）</div></div>
-<div class="f inc2" id="fInc2" hidden><button type="button" class="more" id="inc2Btn" aria-expanded="false" aria-controls="inc2Box"><b id="inc2Lbl">＋ 配偶者の方の年収も入れる</b><i class="opt">任意</i><span>▼</span></button><div class="inc2box" id="inc2Box"><div><div class="hint">税込み・おおよそ。わからなければ空欄で大丈夫です</div><div class="unit"><input id="income2" type="number" inputmode="numeric" min="0" placeholder="300" enterkeyhint="next" tabindex="-1"><span>万円</span></div><p class="incsum" id="incSum" hidden>世帯の合計 <b id="incSumV"></b></p></div></div></div>
-<div class="f" data-need="family"><div class="lb">一緒に暮らしているご家族<span class="req">必須</span></div><div class="hint">続柄を押して、年齢を入れてください</div><div class="seg fam" id="famBtns"><button type="button">夫</button><button type="button">妻</button><button type="button">長男</button><button type="button">長女</button><button type="button">次男</button><button type="button">次女</button><button type="button">三男</button><button type="button">三女</button><button type="button">父</button><button type="button">母</button><button type="button">義父</button><button type="button">義母</button><button type="button">祖父</button><button type="button">祖母</button><button type="button">兄弟姉妹</button><button type="button">その他</button></div><div id="famList"></div><div class="seg" style="margin-top:8px"><button type="button" id="solo">ひとり暮らし</button></div><div class="msg">ご家族と年齢を入れてください（ひとり暮らしなら下のボタン）</div></div>
+<div class="f" id="fInc2" hidden><label for="income2">配偶者の方の年収<span class="opt">任意</span></label><div class="hint">わからなければ空欄で大丈夫です</div><div class="unit"><input id="income2" type="number" inputmode="numeric" min="0" placeholder="300" enterkeyhint="next"><span>万円</span></div><div class="incsum" id="incSum" hidden>世帯の合計<b id="incSumV"></b></div></div>
+<div class="f" data-need="family"><div class="lb">一緒に暮らしているご家族<span class="req">必須</span></div><div class="hint">「＋ 家族を追加」から続柄を選んで、年齢を入れてください</div><div id="famList"></div><div class="famacts"><button type="button" class="addfam" id="famAdd" aria-expanded="false" aria-controls="famPick">＋ 家族を追加</button><div class="seg"><button type="button" id="solo">ひとり暮らし</button></div></div><div class="fampick" id="famPick"><div><div class="pickhd">どなたですか？</div><div class="seg fam" id="famBtns"><button type="button">夫</button><button type="button">妻</button><button type="button">長男</button><button type="button">長女</button><button type="button">次男</button><button type="button">次女</button><button type="button">三男</button><button type="button">三女</button><button type="button">父</button><button type="button">母</button><button type="button">義父</button><button type="button">義母</button><button type="button">祖父</button><button type="button">祖母</button><button type="button">兄弟姉妹</button><button type="button">その他</button></div></div></div><div class="msg">ご家族と年齢を入れてください（ひとり暮らしなら下のボタン）</div></div>
 <div class="f" data-need="house"><div class="lb">お住まい<span class="req">必須</span></div><div class="seg" data-k="house"><button type="button">持ち家</button><button type="button">賃貸</button></div><div class="msg">選んでください</div></div>
 </div>
 
 <div class="sec"><h2>そのほか</h2>
 <div class="f"><label for="hoken">ご加入中の保険<span class="opt">任意</span></label><div class="hint">証券をお預かり済みの方は空欄でOKです</div><textarea id="hoken" placeholder="アフラック がん保険、東京海上 変額保険"></textarea></div>
 <div class="f"><label for="ask">ご質問・ご要望<span class="opt">任意</span></label><textarea id="ask"></textarea></div>
+</div>
+
+<div class="sec"><h2>ご家族の情報<span class="opt">任意</span></h2>
+<div class="f" data-need="more" style="border:0"><div class="hint">配偶者の方やお子さまの分も一緒に入れておきたいときに。お名前と生年月日だけで大丈夫です（2人まで）</div><div id="mfList"></div><button type="button" class="addfam wide" id="mfAdd">＋ 配偶者・ご家族の情報も入れる</button><div class="msg">続柄・お名前・生年月日を入れてください（いらなければ「✕ 消す」）</div></div>
 </div>
 
 <div class="sec agree"><h2>個人情報の取り扱い</h2>
@@ -220,32 +234,44 @@ document.querySelectorAll('#famBtns button').forEach(b=>b.onclick=()=>{solo=fals
  d.innerHTML=(rel==='その他'?'<input type="text" class="relin" placeholder="続柄">':'<span class="rel">'+rel+'</span>')+'<span></span><span class="unit"><input type="number" inputmode="numeric" class="age" placeholder="年齢" min="0" max="120"><span class="u">歳</span></span><button type="button" class="x" aria-label="この行を消す">✕ 消す</button>';
  d.querySelector('.x').onclick=()=>{d.remove();famChanged()};
  d.querySelectorAll('input').forEach(i=>{i.addEventListener('input',famChanged);i.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.isComposing){e.preventDefault();i.blur()}})});
- $('famList').appendChild(d);(d.querySelector('.relin')||d.querySelector('.age')).focus();famChanged()});
-$('solo').onclick=()=>{solo=!solo;if(solo)$('famList').innerHTML='';famChanged()};
+ $('famList').appendChild(d);famPick(false);(d.querySelector('.relin')||d.querySelector('.age')).focus();famChanged()});
+function famPick(o){$('famAdd').setAttribute('aria-expanded',String(o));$('famPick').classList.toggle('open',o);$('famAdd').textContent=o?'閉じる':'＋ 家族を追加';$('famPick').querySelectorAll('button').forEach(b=>b.tabIndex=o?0:-1)}
+famPick(false);$('famAdd').onclick=()=>famPick($('famAdd').getAttribute('aria-expanded')!=='true');
+$('solo').onclick=()=>{solo=!solo;if(solo){$('famList').innerHTML='';famPick(false)}famChanged()};
+// ご家族の情報（任意・2人まで）
+const MF_REL=['夫','妻','長男','長女','次男','次女','父','母','その他'];
+const mfRows=()=>[...document.querySelectorAll('#mfList .mf')];
+function mfVal(x){const rel=x.dataset.rel==='その他'?x.querySelector('.relin').value.trim():(x.dataset.rel||'');const y=x.querySelector('.my').value,m=x.querySelector('.mm').value,d=x.querySelector('.md').value;const dt=new Date(+y,+m-1,+d);const okd=y&&m&&d&&dt.getMonth()===+m-1;return{rel,name:x.querySelector('.mn').value.trim(),birth:okd?y+'/'+m+'/'+d:'',ok:!!(rel&&x.querySelector('.mn').value.trim()&&okd)}}
+function mfOK(){return mfRows().every(x=>mfVal(x).ok)}
+function mfChanged(){$('mfAdd').hidden=mfRows().length>=2;mfRows().forEach((x,i)=>x.querySelector('.no').textContent=(i+1)+'人目');const f=$('mfList').closest('.f');if(mfOK()){f.classList.remove('bad');mfRows().forEach(x=>x.classList.remove('ng'))}}
+$('mfAdd').onclick=()=>{if(mfRows().length>=2)return;const d=document.createElement('div');d.className='mf';
+ let mo='<option value="">月</option>';for(let i=1;i<=12;i++)mo+=`<option value="${i}">${i}月</option>`;let dd='<option value="">日</option>';for(let i=1;i<=31;i++)dd+=`<option value="${i}">${i}日</option>`;
+ d.innerHTML='<div class="hd"><span class="no"></span><button type="button" class="x">✕ 消す</button></div><div class="row"><span>続柄</span><div class="seg">'+MF_REL.map(r=>'<button type="button">'+r+'</button>').join('')+'</div><input type="text" class="relin" placeholder="続柄（例：祖母）" hidden style="margin-top:6px"></div><div class="row"><span>お名前</span><input type="text" class="mn" placeholder="山田 太郎"></div><div class="row"><span>生年月日</span><div class="ymd"><select class="my" aria-label="年">'+$('by').innerHTML.replace(/ selected/g,'')+'</select><select class="mm" aria-label="月">'+mo+'</select><select class="md" aria-label="日">'+dd+'</select></div></div>';
+ d.querySelectorAll('.seg button').forEach(b=>b.onclick=()=>{d.querySelectorAll('.seg button').forEach(z=>z.classList.remove('sel'));b.classList.add('sel');d.dataset.rel=b.textContent;d.querySelector('.relin').hidden=b.textContent!=='その他';mfChanged()});
+ d.querySelector('.x').onclick=()=>{d.remove();mfChanged()};
+ d.querySelectorAll('input,select').forEach(i=>{i.addEventListener('input',mfChanged);i.addEventListener('change',mfChanged)});
+ $('mfList').appendChild(d);mfChanged();d.scrollIntoView({behavior:'smooth',block:'center'})};
 // 郵便番号→住所（zipcloud）
 function lookup(){const z=z2h($('zip').value).replace(/\D/g,'');if(z.length!==7){$('zip').closest('.f').classList.add('bad');return}$('zip').value=z;$('zip').closest('.f').classList.remove('bad');const cb='zc'+Date.now();const s=document.createElement('script');window[cb]=r=>{delete window[cb];s.remove();if(r&&r.results&&r.results[0]){const a=r.results[0],v=a.address1+a.address2+a.address3;if(!$('addr').value.startsWith(v))$('addr').value=v;$('addr').focus();$('addr').setSelectionRange(9999,9999);prog()}else{$('zipbtn').textContent='見つかりません'}};s.src='https://zipcloud.ibsnet.co.jp/api/search?zipcode='+z+'&callback='+cb;s.onerror=()=>{$('zipbtn').textContent='手で入れてください'};document.body.appendChild(s)}
 $('zipbtn').onclick=lookup;$('zip').addEventListener('input',()=>{$('zipbtn').textContent='住所を入れる';if(z2h($('zip').value).replace(/\D/g,'').length===7&&!$('addr').value)lookup()});
 // チェック
 const V={name:()=>$('name').value.trim(),kana:()=>$('kana').value.trim(),birth:()=>$('by').value&&$('bm').value&&$('bd').value,sex:()=>sel.sex,
 email:()=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(z2h($('email').value.trim())),tel:()=>z2h($('tel').value).replace(/\D/g,'').length>=10,zip:()=>z2h($('zip').value).replace(/\D/g,'').length===7,addr:()=>$('addr').value.trim().length>=4,
-job:()=>$('job').value.trim(),head:()=>sel.head,spouse:()=>sel.spouse,income:()=>$('income').value!=='',family:()=>famOK(),house:()=>sel.house,agree:()=>$('agree').checked};
-const KEYS=Object.keys(V).filter(k=>k!=='agree');
-function incUpd(){const has=!!sel.spouse&&sel.spouse!=='配偶者なし';$('fInc2').hidden=!has;if(!has){$('income2').value='';inc2Open(false)}const a=$('income').value,b=$('income2').value;const on=has&&a!==''&&b!=='';$('incSum').hidden=!on;if(on)$('incSumV').textContent='約 '+(+a + +b).toLocaleString()+' 万円';
- const open=$('inc2Btn').getAttribute('aria-expanded')==='true';document.querySelector('#inc2Btn .opt').hidden=!open&&b!=='';$('inc2Lbl').textContent=open?'配偶者の方の年収':b!==''?'配偶者 '+(+b).toLocaleString()+'万円'+(on?'・合計 '+(+a + +b).toLocaleString()+'万円':''):'＋ 配偶者の方の年収も入れる'}
-function inc2Open(o){$('inc2Btn').setAttribute('aria-expanded',String(o));$('inc2Box').classList.toggle('open',o);$('income2').tabIndex=o?0:-1}
-$('inc2Btn').onclick=()=>{const o=$('inc2Btn').getAttribute('aria-expanded')!=='true';inc2Open(o);incUpd();if(o)setTimeout(()=>$('income2').focus(),120)};
+job:()=>$('job').value.trim(),head:()=>sel.head,spouse:()=>sel.spouse,income:()=>$('income').value!=='',family:()=>famOK(),house:()=>sel.house,more:()=>mfOK(),agree:()=>$('agree').checked};
+const KEYS=Object.keys(V).filter(k=>k!=='agree'&&k!=='more');
+function incUpd(){const has=!!sel.spouse&&sel.spouse!=='配偶者なし';$('fInc2').hidden=!has;if(!has)$('income2').value='';const a=$('income').value,b=$('income2').value;const on=has&&a!==''&&b!=='';$('incSum').hidden=!on;if(on)$('incSumV').textContent='約 '+(+a + +b).toLocaleString()+' 万円'}
 function prog(){incUpd();const n=KEYS.filter(k=>V[k]()).length;$('cnt').textContent=n+' / '+KEYS.length;$('bar').style.width=(n/KEYS.length*100)+'%'}
 document.querySelectorAll('input,select,textarea').forEach(el=>{el.addEventListener('input',()=>{const f=el.closest('.f');if(f&&f.dataset.need&&V[f.dataset.need]())f.classList.remove('bad');prog()});el.addEventListener('change',()=>{const f=el.closest('.f');if(f&&f.dataset.need&&V[f.dataset.need]())f.classList.remove('bad');prog()})});
 // Enterで次の欄へ
 const order=[...document.querySelectorAll('#vForm input[type=text]:not(#website),#vForm input[type=email],#vForm input[type=tel],#vForm input[type=number]')];
-order.forEach((el,i)=>el.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.isComposing){e.preventDefault();if(el.id==='zip')lookup();const nx=order.slice(i+1).find(x=>x.offsetParent!==null&&x.tabIndex>=0);if(nx)nx.focus();else el.blur()}}));
+order.forEach((el,i)=>el.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.isComposing){e.preventDefault();if(el.id==='zip')lookup();const nx=order.slice(i+1).find(x=>x.offsetParent!==null);if(nx)nx.focus();else el.blur()}}));
 function show(id){document.querySelectorAll('.view').forEach(v=>v.classList.toggle('on',v.id===id));window.scrollTo({top:0,behavior:'smooth'})}
 let data={};
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-$('toConfirm').onclick=()=>{let first=null;document.querySelectorAll('#vForm .f[data-need]').forEach(f=>{const ok=!!V[f.dataset.need]();f.classList.toggle('bad',!ok);if(!ok&&!first)first=f});if(first){first.scrollIntoView({behavior:'smooth',block:'center'});return}
+$('toConfirm').onclick=()=>{mfRows().forEach(x=>x.classList.toggle('ng',!mfVal(x).ok));let first=null;document.querySelectorAll('#vForm .f[data-need]').forEach(f=>{const ok=!!V[f.dataset.need]();f.classList.toggle('bad',!ok);if(!ok&&!first)first=f});if(first){first.scrollIntoView({behavior:'smooth',block:'center'});return}
  const birth=$('by').value+'/'+$('bm').value+'/'+$('bd').value;
- data={form:'soudan-check',ver:VER,agree:true,agreedAt:new Date().toISOString(),website:$('website').value,name:$('name').value.trim(),kana:$('kana').value.trim(),birth,sex:sel.sex,email:z2h($('email').value.trim()),tel:z2h($('tel').value).replace(/\D/g,''),zip:z2h($('zip').value).replace(/\D/g,''),addr:$('addr').value.trim(),job:$('job').value.trim(),head:sel.head,spouse:sel.spouse,income:$('income').value,income2:$('income2').value,family:famText(),house:sel.house,hoken:$('hoken').value.trim(),ask:$('ask').value.trim(),src:location.href.split('?')[0].split('#')[0]};
- const rows=[['お名前',data.name+'（'+data.kana+'）'],['生年月日',birth],['性別',data.sex],['メール',data.email],['電話',data.tel],['ご住所','〒'+data.zip+' '+data.addr],['お仕事',data.job],['世帯主の方',data.head],['配偶者の方',data.spouse],['ご本人の年収',data.income+'万円']].concat(data.income2!==''?[['配偶者の方の年収',data.income2+'万円'],['世帯の合計',(+data.income + +data.income2)+'万円']]:[]).concat([['ご家族',data.family],['お住まい',data.house],['ご加入中の保険',data.hoken||'—'],['ご質問・ご要望',data.ask||'—'],['個人情報','同意済み（'+VER+'）']]);
+ data={form:'soudan-check',ver:VER,agree:true,agreedAt:new Date().toISOString(),website:$('website').value,name:$('name').value.trim(),kana:$('kana').value.trim(),birth,sex:sel.sex,email:z2h($('email').value.trim()),tel:z2h($('tel').value).replace(/\D/g,''),zip:z2h($('zip').value).replace(/\D/g,''),addr:$('addr').value.trim(),job:$('job').value.trim(),head:sel.head,spouse:sel.spouse,income:$('income').value,income2:$('income2').value,family:famText(),house:sel.house,hoken:$('hoken').value.trim(),others:mfRows().map(x=>{const v=mfVal(x);return{rel:v.rel,name:v.name,birth:v.birth}}),ask:$('ask').value.trim(),src:location.href.split('?')[0].split('#')[0]};
+ const rows=[['お名前',data.name+'（'+data.kana+'）'],['生年月日',birth],['性別',data.sex],['メール',data.email],['電話',data.tel],['ご住所','〒'+data.zip+' '+data.addr],['お仕事',data.job],['世帯主の方',data.head],['配偶者の方',data.spouse],['ご本人の年収',data.income+'万円']].concat(data.income2!==''?[['配偶者の方の年収',data.income2+'万円'],['世帯の合計',(+data.income + +data.income2)+'万円']]:[]).concat([['ご家族',data.family],['お住まい',data.house],['ご加入中の保険',data.hoken||'—'],['ご質問・ご要望',data.ask||'—']].concat(data.others.map((o,i)=>['ご家族の情報'+(i+1),o.rel+'　'+o.name+'（'+o.birth+'）'])).concat([['個人情報','同意済み（'+VER+'）']]));
  $('sum').innerHTML=rows.map(r=>`<div class="line"><span>${r[0]}</span><b>${esc(r[1])}</b></div>`).join('');
  $('text').value=['【ヒアリングシート】'+new Date().toLocaleDateString('ja-JP')].concat(rows.map(r=>r[0]+'：'+r[1])).join('\n');
  show('vConfirm')};
